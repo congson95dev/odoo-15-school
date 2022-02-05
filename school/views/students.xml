@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="school_students_tree" model="ir.ui.view">
+            <field name="name">school.students.tree</field>
+            <field name="model">school.students</field>
+            <field name="arch" type="xml">
+                <!-- multi_edit is to allow multi edit in tree view -->
+                <tree multi_edit="1">
+                    <!-- optional="show" and optional="hide" to show/hide column by default -->
+                    <field name="sequence" readonly="1" optional="show"/>
+                    <field name="name" optional="show"/>
+                    <field name="middle_name" optional="show"/>
+                    <field name="last_name" optional="show"/>
+                    <field name="photo" optional="show"/>
+                    <field name="student_age" optional="show"/>
+                    <field name="student_dob" optional="show"/>
+                    <field name="student_gender" optional="show"/>
+                    <field name="student_blood_group" optional="show"/>
+                    <field name="nationality" optional="show"/>
+                    <field name="student_calendar_count" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="school_students_kanban" model="ir.ui.view" >
+            <field name="name">school.students.kanban</field>
+            <field name="model">school.students</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="middle_name"/>
+                    <field name="last_name"/>
+                    <field name="photo"/>
+                    <field name="student_age"/>
+                    <field name="student_dob"/>
+                    <field name="student_gender"/>
+                    <field name="student_blood_group"/>
+                    <field name="nationality"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            Name:
+                                            <field name="name"/>
+                                        </li>
+                                        <li>
+                                            Age:
+                                            <field name="student_age"/>
+                                        </li>
+                                        <li>
+                                            Gender:
+                                            <field name="student_gender"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="school_students_form" model="ir.ui.view">
+            <field name="name">school.students.form</field>
+            <field name="model">school.students</field>
+            <field name="arch" type="xml">
+                <form string="Student View/Edit">
+                    <header>
+                        <button id="create_calendar" string="Create Calendar" name="%(action_school_create_calendar)d" type="action" class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="sequence" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="middle_name"/>
+                            <field name="last_name"/>
+                        </group>
+                        <group>
+                            <field name="student_age"/>
+                            <field name="student_dob"/>
+                        </group>
+                        <group>
+                            <field name="student_gender" invisible="context.get('hide_gender')"/>
+                            <field name="student_blood_group"/>
+                        </group>
+                        <group>
+                            <field name="nationality"/>
+                            <field name="student_calendar_count"/>
+                        </group>
+                        <notebook>
+                            <page name="calendars" string="Calendars">
+                                <field name="calendar_ids" readonly="1">
+                                    <tree>
+                                        <field name="sequence" readonly="1"/>
+                                        <field name="student_id"/>
+                                        <field name="student_age"/>
+                                        <field name="student_gender"/>
+                                        <field name="date"/>
+                                        <field name="state"/>
+                                    </tree>
+                                    <form>
+                                        <div class="oe_title">
+                                            <h1>
+                                                <field name="sequence" readonly="1"/>
+                                            </h1>
+                                        </div>
+                                        <group>
+                                            <field name="student_id"/>
+                                            <field name="student_age"/>
+                                            <field name="student_gender" readonly="1" force_save="1"/>
+                                            <field name="date"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <!-- chatbox section -->
+                    <!-- we need to inherit this 2 model inside our model to make this chatbox work -->
+                    <!-- _inherit = ['mail.thread', 'mail.activity.mixin'] -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="school_students_search" model="ir.ui.view">
+            <field name="name">school.students.search</field>
+            <field name="model">school.students</field>
+            <field name="arch" type="xml">
+                <search string="Students">
+                    <field name="name"/>
+                    <field name="middle_name"/>
+                    <field name="last_name"/>
+                    <field name="photo"/>
+                    <field name="student_age"/>
+                    <field name="student_dob"/>
+                    <field name="student_gender"/>
+                    <field name="student_blood_group"/>
+                    <field name="nationality"/>
+                    <separator/>
+                    <filter name="student_age_adult" string="Age More Than 18" domain="[('student_age', '>=', 18)]"/>
+                    <filter name="student_age_kid" string="Age Less Than 18" domain="[('student_age', '&lt;', 18)]"/>
+                    <filter name="student_gender" string="Male" domain="[('student_gender', '=', 'm')]"/>
+                    <filter name="student_gender" string="Female" domain="[('student_gender', '=', 'f')]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <!-- group by name is difference than field name, or else will be issue when set context in ir.actions.act_window below -->
+                        <filter string="Gender" name="group_student_gender" domain="[]" context="{'group_by': 'student_gender'}"/>
+                        <filter string="Name" name="group_name" domain="[]" context="{'group_by': 'name'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_school_students">
+            <field name="name">Students</field>
+            <field name="res_model">school.students</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[]</field>
+            <!-- set default group by and filter -->
+            <field name="context">{"search_default_group_student_gender": 1, "search_default_student_age_adult": 1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new student
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_school" name="School"/>
+        <menuitem id="menu_students" name="Students" parent="menu_school"/>
+        <menuitem id="school_students" name="Students" parent="menu_students"
+                  action="action_school_students"/>
+    </data>
+</odoo>

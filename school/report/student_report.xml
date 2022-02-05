@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_student" model="ir.actions.report">
+            <!-- this field will show as name of the button,
+            also will be the name of exported file, unless we use print_report_name as below -->
+            <field name="name">Students</field>
+            <field name="model">school.students</field>
+            <field name="report_type">qweb-pdf</field>
+            <!-- In single report, this print_report_name will be use as dynamic name of the file.
+            But in multiple reports, this will not work, it will use <field name="name"> as file name.
+            So we should use print_report_name for single report, and <field name="name"> to multiple reports.
+            -->
+            <field name="print_report_name">'Student - [%s]' % (object.sequence).replace('/', '')</field>
+            <!-- the view file is declare in this variable -->
+            <field name="report_name">school.report_student</field>
+            <!-- not sure what this for -->
+            <field name="report_file">school.report_student</field>
+            <!-- not sure what this for -->
+            <field name="binding_model_id" ref="model_school_students"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

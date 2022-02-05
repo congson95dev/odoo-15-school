@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="action_school_students_gender_male">
+            <field name="name">Male Students</field>
+            <field name="res_model">school.students</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{"search_default_student_gender": "m", "hide_gender": 1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new student
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_school_students_gender_female">
+            <field name="name">Female Students</field>
+            <field name="res_model">school.students</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{"search_default_student_gender": "f", "hide_gender": 1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new student
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="school_students_genders" name="Gender" parent="menu_students"/>
+        <menuitem id="school_students_gender_male" name="Male" parent="school_students_genders"
+                  action="action_school_students_gender_male"/>
+        <menuitem id="school_students_gender_female" name="Female" parent="school_students_genders"
+                  action="action_school_students_gender_female"/>
+    </data>
+</odoo>

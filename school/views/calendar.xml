@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="school_calendar_tree" model="ir.ui.view">
+            <field name="name">school.calendar.tree</field>
+            <field name="model">school.calendar</field>
+            <field name="arch" type="xml">
+                <!-- default_order is bigger than _order in model -->
+                <!-- multi_edit is to allow multi edit in tree view -->
+                <tree default_order="sequence asc" multi_edit="1">
+                    <field name="sequence" readonly="1"/>
+                    <field name="student_id"/>
+                    <field name="student_age"/>
+                    <field name="student_gender"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="school_calendar_form" model="ir.ui.view">
+            <field name="name">school.calendar.form</field>
+            <field name="model">school.calendar</field>
+            <field name="arch" type="xml">
+                <form string="Calendar View/Edit">
+                    <header>
+                        <button id="button_draft" name="action_draft" string="Set To Draft" type="object" states="cancel" class="btn-primary"/>
+                        <button id="button_confirm" name="action_confirm" string="Set To Confirm" type="object" states="draft" class="btn-primary"/>
+                        <button id="button_done" name="action_done" string="Set To Done" type="object" states="confirm" class="btn-primary"/>
+                        <button id="button_cancel" name="action_cancel" string="Set To Cancel" type="object" states="draft,confirm,done"/>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="sequence" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="student_age"/>
+                            <field name="student_gender" readonly="1" force_save="1"/>
+                            <field name="date"/>
+                        </group>
+                        <notebook>
+                            <page string="Page 1" name="page_1">
+                                <group>
+                                    <field name="calendar_jobs_ids">
+                                        <tree editable="bottom">
+                                            <field name="name"></field>
+                                            <field name="priority"></field>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="name"></field>
+                                                <field name="priority"></field>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Page 2" name="page_2">
+                                <group>
+                                    <field name="student_age"></field>
+                                    <field name="student_gender" readonly="1"></field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <!-- chatbox section -->
+                    <!-- we need to inherit this 2 model inside our model to make this chatbox work -->
+                    <!-- _inherit = ['mail.thread', 'mail.activity.mixin'] -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_school_calendar">
+            <field name="name">Calendar</field>
+            <field name="res_model">school.calendar</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new appointment
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_school_calendar" name="Calendar" parent="menu_school"/>
+        <menuitem id="school_calendar" name="Calendar" parent="menu_school_calendar"
+                  action="action_school_calendar"/>
+        <menuitem id="school_create_calendar" name="Create Calendar" parent="menu_school_calendar"
+                  action="action_school_create_calendar"/>
+    </data>
+</odoo>

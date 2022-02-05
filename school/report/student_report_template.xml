@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- this template id is called in report/student_report.xml -->
+    <template id="report_student">
+        <t t-call="web.html_container">
+            <!-- docs is the record data -->
+            <!-- this command equal to foreach(docs as o) -->
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <!-- html code -->
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <table class="table table-condensed" style="border: 3px solid black !important;">
+                                    <tr>
+                                        <!-- left section -->
+                                        <td width="40%">
+                                            <p style="text-align:center;padding-top:10px;">
+                                                <!-- if not found photo, set photo to the default image -->
+                                                <img t-if="not o.photo"
+                                                     t-att-src="'/web/static/img/placeholder.png'" height="140"
+                                                     border="1" width="120"/>
+                                                <!-- if found photo, show it -->
+                                                <img t-if="o.photo"
+                                                     t-att-src="'data:image/png;base64,%s' % to_text(o.photo)"
+                                                     height="140" border="1" width="120"/>
+                                            </p>
+                                        </td>
+                                        <!-- right section -->
+                                        <td width="60%">
+                                            <table>
+                                                <tr>
+                                                    <td colspan="3" class="text-center">
+                                                        <span t-field="o.name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Age:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.student_age"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Sequence:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.sequence"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br/>
+
+                        <!-- calendar section -->
+                        <t t-if="o.calendar_ids">
+                            <span>Calendar Details</span>
+                            <table class="table table-sm o_main_table" name="calendar">
+                                <thead>
+                                    <tr>
+                                        <th name="th_sequence" class="text-left">
+                                            <span>Sequence</span>
+                                        </th>
+                                        <th name="th_date" class="text-left">
+                                            <span>Date</span>
+                                        </th>
+                                        <th name="th_state" class="text-left">
+                                            <span>State</span>
+                                        </th>
+                                        <th name="th_jobs_count" class="text-left">
+                                            <span>Jobs Count</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <!-- set calendar_count = 0 -->
+                                <t t-set="calendar_count" t-value="0"/>
+                                <t t-foreach="o.calendar_ids" t-as="line">
+                                    <!-- set calendar_count = calendar_count + 1 -->
+                                    <t t-set="calendar_count" t-value="calendar_count + 1"/>
+                                    <tr>
+                                        <td>
+                                            <span t-field="line.sequence"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.state"/>
+                                        </td>
+                                        <td>
+                                            <!-- call function to count calendar jobs -->
+                                            <span t-esc="line.count_jobs()"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <tr>
+                                    <td colspan="3">
+                                        <strong>Total Calendar</strong>
+                                    </td>
+                                    <td>
+                                        <!-- print calendar_count -->
+                                        <t t-esc="calendar_count"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

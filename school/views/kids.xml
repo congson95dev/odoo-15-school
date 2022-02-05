@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="action_school_students_kids">
+            <field name="name">Kids</field>
+            <field name="res_model">school.students</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <!-- use domain to filter automatic -->
+            <field name="domain">[('student_age','&lt;','18'), ('student_gender','=','m')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new student
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="school_students_kids" name="Kids" parent="menu_students"
+                  action="action_school_students_kids"/>
+    </data>
+</odoo>
