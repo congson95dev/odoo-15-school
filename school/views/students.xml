@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- add new button to actions server -->
+        <!-- add "Create Calendar" button -->
+        <record id="action_create_calendar" model="ir.actions.server">
+            <field name="name">Create Calendar</field>
+            <field name="model_id" ref="model_school_students"/>
+            <field name="binding_model_id" ref="school.model_school_students"/>
+            <!-- set this action is appear in form or list -->
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <!-- action -->
+            <!-- this action is writed for function outside of current model -->
+            <!-- such as: action_school_create_calendar is from the wizard (outside of current model) -->
+            <!-- don't understand what is the other codes used for -->
+            <field name="code">
+                if record:
+                    action_values = env.ref('school.action_school_create_calendar').sudo().read()[0]
+                    action_values.update({'context': env.context})
+                    action = action_values
+            </field>
+        </record>
+
         <record id="school_students_tree" model="ir.ui.view">
             <field name="name">school.students.tree</field>
             <field name="model">school.students</field>

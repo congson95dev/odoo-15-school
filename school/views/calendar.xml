@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- add new button to actions server -->
+        <!-- add "Change to confirm" button -->
+        <record id="action_confirm_calendar" model="ir.actions.server">
+            <field name="name">Change to Confirm</field>
+            <field name="model_id" ref="model_school_calendar"/>
+            <field name="binding_model_id" ref="school.model_school_calendar"/>
+            <!-- set this action is appear in form or list -->
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <!-- action -->
+            <!-- this action is writed for function in the same model -->
+            <field name="code">
+                action = records.action_confirm()
+            </field>
+        </record>
+
         <record id="school_calendar_tree" model="ir.ui.view">
             <field name="name">school.calendar.tree</field>
             <field name="model">school.calendar</field>
