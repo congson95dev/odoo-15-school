@@ -42,15 +42,20 @@
                             <field name="student_gender" readonly="1" force_save="1"/>
                             <field name="date"/>
                         </group>
+                        <!-- notebook section -->
                         <notebook>
                             <page string="Page 1" name="page_1">
                                 <group>
                                     <field name="calendar_jobs_ids">
+                                        <!-- editable="<something>" is for ignore the popup when you click "Add a line" -->
+                                        <!-- editable="top" is to create a new line at top -->
+                                        <!-- editable="bottom" is to create a new line at bottom -->
                                         <tree editable="bottom">
                                             <field name="name"></field>
                                             <field name="priority"></field>
                                         </tree>
                                         <form>
+                                            <!-- only show 2 fields "name" and "priority", ignore field "calendar_id" so it will hide that field -->
                                             <group>
                                                 <field name="name"></field>
                                                 <field name="priority"></field>
