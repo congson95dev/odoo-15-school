@@ -4,7 +4,8 @@
     'depends': [
         'base',
         'sale',
-        'mail'
+        'mail',
+        'report_xlsx'
     ],
     'author': "Fudo",
     'description': """
