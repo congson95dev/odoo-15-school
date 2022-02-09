@@ -115,5 +115,10 @@
                   action="action_school_calendar"/>
         <menuitem id="school_create_calendar" name="Create Calendar" parent="menu_school_calendar"
                   action="action_school_create_calendar"/>
+        <!-- Not working -->
+        <!-- Try to create a report from a wizard, but it's not working -->
+        <!-- https://stackoverflow.com/questions/71047099/create-report-from-wizard-in-odoo-15 -->
+        <menuitem id="school_search_and_print_calendar" name="Search and Print Calendar" parent="menu_school_calendar"
+                  action="action_school_search_and_print_calendar"/>
     </data>
 </odoo>

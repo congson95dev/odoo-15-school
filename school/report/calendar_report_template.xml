@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Not working -->
+<!-- Try to create a report from a wizard, but it's not working -->
+<!-- https://stackoverflow.com/questions/71047099/create-report-from-wizard-in-odoo-15 -->
+<odoo>
+    <!-- this template id is called in report/calendar_report.xml -->
+    <template id="report_calendar">
+        <t t-call="web.html_container">
+            <!-- docs is the record data -->
+            <!-- this command equal to foreach(docs as o) -->
+            <t t-call="web.external_layout">
+                <!-- html code -->
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div>
+                        <h2>This is a test</h2>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

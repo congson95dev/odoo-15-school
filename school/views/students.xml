@@ -27,7 +27,8 @@
             <field name="model">school.students</field>
             <field name="arch" type="xml">
                 <!-- multi_edit is to allow multi edit in tree view -->
-                <tree multi_edit="1">
+                <!-- add expand="1" to show all the records at first loading page -->
+                <tree multi_edit="1" expand="1">
                     <!-- optional="show" and optional="hide" to show/hide column by default -->
                     <field name="sequence" readonly="1" optional="show"/>
                     <field name="name" optional="show"/>

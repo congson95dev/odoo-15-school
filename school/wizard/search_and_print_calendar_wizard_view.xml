@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Not working -->
+<!-- Try to create a report from a wizard, but it's not working -->
+<!-- https://stackoverflow.com/questions/71047099/create-report-from-wizard-in-odoo-15 -->
+<odoo>
+    <record id="view_school_search_and_print_calendar_wizard" model="ir.ui.view">
+        <field name="name">Search and Print Calendar</field>
+        <field name="model">school.search.and.print.calendar.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Search and Print Calendar">
+                <sheet>
+                    <group>
+                        <field name="student_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="school_print_calendars" string="Print Calendars" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_school_search_and_print_calendar" model="ir.actions.act_window">
+        <field name="name">School Search and Print Calendar</field>
+        <field name="res_model">school.search.and.print.calendar.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

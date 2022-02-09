@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Not working -->
+<!-- Try to create a report from a wizard, but it's not working -->
+<!-- https://stackoverflow.com/questions/71047099/create-report-from-wizard-in-odoo-15 -->
+<odoo>
+    <data>
+        <!-- pdf version -->
+        <record id="action_report_calendar" model="ir.actions.report">
+            <!-- this field will show as name of the button,
+            also will be the name of exported file, unless we use print_report_name as below -->
+            <field name="name">Calendar Report</field>
+            <field name="model">school.search.and.print.calendar.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <!-- In single report, this print_report_name will be use as dynamic name of the file.
+            But in multiple reports, this will not work, it will use <field name="name"> as file name.
+            So we should use print_report_name for single report, and <field name="name"> to multiple reports.
+            -->
+            <field name="print_report_name">'Calendar - [%s]' % (object.sequence).replace('/', '')</field>
+            <!-- the view file is declare in this variable -->
+            <field name="report_name">school.report_calendar</field>
+            <!-- not sure what this for -->
+            <field name="report_file">school.report_calendar</field>
+            <!-- not sure what this for -->
+            <field name="binding_model_id" ref="model_school_search_and_print_calendar_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
