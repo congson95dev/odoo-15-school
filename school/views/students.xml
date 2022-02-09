@@ -91,8 +91,11 @@
                 <form string="Student View/Edit">
                     <header>
                         <button id="create_calendar" string="Create Calendar" name="%(action_school_create_calendar)d" type="action" class="btn-primary"/>
+                        <button id="action_url" string="Redirect To Github" name="redirect_to_github" type="object" class="btn-primary"/>
                     </header>
                     <sheet>
+                        <!-- ribbon for archive / unarchive -->
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                         <field name="photo" widget="image" class="oe_avatar"/>
                         <div class="oe_title">
                             <h1>
@@ -115,6 +118,8 @@
                         <group>
                             <field name="nationality"/>
                             <field name="student_calendar_count"/>
+                            <!-- show archive / unarchive in form -->
+                            <field name="active" invisible="1"/>
                         </group>
                         <notebook>
                             <page name="calendars" string="Calendars">
@@ -176,11 +181,19 @@
                     <filter name="student_gender" string="Male" domain="[('student_gender', '=', 'm')]"/>
                     <filter name="student_gender" string="Female" domain="[('student_gender', '=', 'f')]"/>
                     <separator/>
+                    <!-- filter for archive / unarchive -->
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <separator/>
                     <group expand="0" string="Group By">
                         <!-- group by name is difference than field name, or else will be issue when set context in ir.actions.act_window below -->
                         <filter string="Gender" name="group_student_gender" domain="[]" context="{'group_by': 'student_gender'}"/>
                         <filter string="Name" name="group_name" domain="[]" context="{'group_by': 'name'}"/>
                     </group>
+                    <!-- search panel is a left sidebar filter -->
+                    <searchpanel>
+                        <field name="student_gender" string="Gender" icon="fa-cutlery" color="#875A7B" enable_counters="1"/>
+                        <field name="student_blood_group" select="multi" string="Blood Group" icon="fa-truck" enable_counters="1"/>
+                    </searchpanel>
                 </search>
             </field>
         </record>

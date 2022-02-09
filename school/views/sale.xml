@@ -34,6 +34,25 @@
         </field>
     </record>
 
+    <!-- move field in list view -->
+    <!-- inherit view "base.view_partner_tree" -->
+    <record id="view_partner_tree_inherit" model="ir.ui.view">
+        <!-- name is whatever you like -->
+        <field name="name">view.partner.tree.inherit</field>
+        <!-- this model field is the original model -->
+        <field name="model">res.partner</field>
+        <!-- this inherit_id value is get by "external id" from debug mode view form -->
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <!-- name is get by "field" when pointing the mouse to the field if you enable debug mode -->
+            <!-- move email before phone -->
+            <!-- move whatever field inside to before phone -->
+            <xpath expr="//field[@name='phone']" position="before">
+                <field name="email" position="move"/>
+            </xpath>
+        </field>
+    </record>
+
     <!-- add custom menu to sale menu items -->
     <!-- parent name is get by open setting -> technical -> user interface -> menu items -> -->
     <!-- search by name of the menu, Ex: we wanna add to menu Sales => Orders, then search "Orders" -> -->

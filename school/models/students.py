@@ -32,6 +32,8 @@ class Students(models.Model):
     student_calendar_count = fields.Integer(string="Calendar Count", compute="_compute_student_calendar_count", tracking=True)
     nationality = fields.Many2one('res.country', string='Nationality', tracking=True)
     calendar_ids = fields.One2many('school.calendar', 'student_id', string="Calendars")
+    # show archive / unarchive in list
+    active = fields.Boolean(string="Active", default=True)
 
 
     # compute function
@@ -86,3 +88,11 @@ class Students(models.Model):
             student = self.env['school.students'].search([('name','=',record.name),('id','!=',record.id)])
             if (student):
                 raise ValidationError(_('Name %s already exists', self.name))
+
+    # example of redirect
+    def redirect_to_github(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': 'https://github.com/saxsax1995/odoo-15-school',
+        }
