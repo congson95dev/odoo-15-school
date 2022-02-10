@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Not working -->
-<!-- Try to create a report from a wizard, but it's not working -->
-<!-- https://stackoverflow.com/questions/71047099/create-report-from-wizard-in-odoo-15 -->
 <odoo>
     <record id="view_school_search_and_print_calendar_wizard" model="ir.ui.view">
         <field name="name">Search and Print Calendar</field>

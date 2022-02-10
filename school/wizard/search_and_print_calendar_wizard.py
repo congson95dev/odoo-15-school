@@ -9,12 +9,13 @@ class SearchAndPrintCalendarWizard(models.TransientModel):
     date_to = fields.Datetime(string='Date To')
 
     def school_print_calendars(self):
-        # Not working
-        # Try to create a report from a wizard, but it's not working
-        # https://stackoverflow.com/questions/71047099/create-report-from-wizard-in-odoo-15
+        calendars_data = self.env['school.calendar'].search_read([('student_id','=',self.student_id.id)])
+        # pass data to view
         data = {
-            'form': self.read()[0]
+            'form_data': self.read()[0],
+            'calendars_data': calendars_data
         }
+        # call report action
         report_action = self.env.ref('school.action_report_calendar').report_action(self, data=data)
 
         return report_action

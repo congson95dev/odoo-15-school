@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Not working -->
-<!-- Try to create a report from a wizard, but it's not working -->
-<!-- https://stackoverflow.com/questions/71047099/create-report-from-wizard-in-odoo-15 -->
 <odoo>
+
+    <!-- variable from this view is called from this model: wizard/search_and_print_calendar_wizard.py -->
+    <!-- Ex: form_data and calendars_data -->
+
     <!-- this template id is called in report/calendar_report.xml -->
     <template id="report_calendar">
         <t t-call="web.html_container">
@@ -12,9 +13,104 @@
                 <!-- html code -->
                 <div class="page">
                     <div class="oe_structure"/>
-                    <div>
-                        <h2>This is a test</h2>
+
+                    <div class="text-center">
+                        <h2>Form Information</h2>
                     </div>
+
+                    <!-- form information section -->
+                    <table>
+                        <tr>
+                            <td>Student</td>
+                            <td>:</td>
+                            <td>
+                                <!-- variable from this view is called from this model: wizard/search_and_print_calendar_wizard.py -->
+                                <t t-if="form_data.get('student_id')">
+                                    <t t-esc="form_data['student_id'][1]"/>
+                                </t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date From</td>
+                            <td>:</td>
+                            <td>
+                                <t t-if="form_data.get('date_from')">
+                                    <t t-esc="form_data['date_from']"/>
+                                </t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date To</td>
+                            <td>:</td>
+                            <td>
+                                <t t-if="form_data.get('date_to')">
+                                    <t t-esc="form_data['date_to']"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+
+                    <!-- calendar section -->
+                    <t t-if="calendars_data">
+                        <div class="text-center">
+                            <h2>Calendars List</h2>
+                        </div>
+                        <table class="table table-sm o_main_table" name="calendar">
+                            <thead>
+                                <tr>
+                                    <th name="th_sequence" class="text-left">
+                                        <span>Sequence</span>
+                                    </th>
+                                    <th name="th_date" class="text-left">
+                                        <span>Date</span>
+                                    </th>
+                                    <th name="th_state" class="text-left">
+                                        <span>State</span>
+                                    </th>
+<!--                                    <th name="th_jobs_count" class="text-left">-->
+<!--                                        <span>Jobs Count</span>-->
+<!--                                    </th>-->
+                                </tr>
+                            </thead>
+                            <!-- set calendar_count = 0 -->
+                            <t t-set="calendar_count" t-value="0"/>
+                            <t t-foreach="calendars_data" t-as="line">
+                                <!-- set calendar_count = calendar_count + 1 -->
+                                <t t-set="calendar_count" t-value="calendar_count + 1"/>
+                                <tr>
+                                    <td>
+                                        <!-- report in wizard will use this type of call to call variable inside for loop -->
+                                        <!-- t-esc="line['sequence']" -->
+                                        <!-- but report in normal page will use this -->
+                                        <!-- t-field="line.sequence"-->
+                                        <span t-esc="line['sequence']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['date']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['state']"/>
+                                    </td>
+<!--                                    I'm looking a solution to call function in this view but not working -->
+<!--                                    <td>-->
+<!--                                        &lt;!&ndash; call function to count calendar jobs &ndash;&gt;-->
+<!--                                        <span t-esc="count_jobs(line['id'])"/>-->
+<!--                                    </td>-->
+                                </tr>
+                            </t>
+
+                            <tr>
+                                <td colspan="2">
+                                    <strong>Total Calendar</strong>
+                                </td>
+                                <td>
+                                    <!-- print calendar_count -->
+                                    <t t-esc="calendar_count"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
                 </div>
             </t>
         </t>
