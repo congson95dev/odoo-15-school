@@ -23,5 +23,30 @@
             <field name="binding_model_id" ref="model_school_search_and_print_calendar_wizard"/>
             <field name="binding_type">report</field>
         </record>
+
+        <!-- excel version -->
+        <!-- Download this module: -->
+        <!-- https://apps.odoo.com/apps/modules/15.0/report_xlsx/#installation -->
+        <record id="action_report_calendar_xlsx" model="ir.actions.report">
+            <!-- this field will show as name of the button,
+            also will be the name of exported file, unless we use print_report_name as below -->
+            <field name="name">Calendar Report XLSX</field>
+            <!-- use the model of the wizard, because that's where this report get data -->
+            <field name="model">school.search.and.print.calendar.wizard</field>
+            <field name="report_type">xlsx</field>
+            <!-- In single report, this print_report_name will be use as dynamic name of the file.
+            But in multiple reports, this will not work, it will use <field name="name"> as file name.
+            So we should use print_report_name for single report, and <field name="name"> to multiple reports.
+            -->
+            <field name="print_report_name">'Calendar - [%s]' % (object.sequence).replace('/', '')</field>
+            <!-- the model file is declare in this variable -->
+            <field name="report_name">school.report_calendar_xlsx</field>
+            <!-- not sure what this for -->
+            <field name="report_file">school.report_calendar_xlsx</field>
+            <!-- not sure what this for -->
+            <!-- use the model of the wizard, because that's where this report get data -->
+            <field name="binding_model_id" ref="model_school_search_and_print_calendar_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
     </data>
 </odoo>

@@ -14,6 +14,7 @@
                 </sheet>
                 <footer>
                     <button name="school_print_calendars" string="Print Calendars" type="object" class="btn-primary"/>
+                    <button name="school_print_calendars_xlsx" string="Print Calendars XLSX" type="object" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" />
                 </footer>
             </form>

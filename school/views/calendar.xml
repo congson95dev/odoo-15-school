@@ -53,7 +53,13 @@
                             </h1>
                         </div>
                         <group>
-                            <field name="student_id"/>
+                            <!-- when we fill "bla bla" in Many2one field, and it's not exists, then it will show 2 options -->
+                            <!-- "create" and "create and edit" -->
+                            <!-- below code is to disable those 2 options -->
+                            <!-- options="{'no_edit': True, 'no_create': True}" -->
+                            <!-- also, if you click on some exists record, it will show a button to view that record -->
+                            <!-- options="{'no_open': True}" will make that button disappear-->
+                            <field name="student_id" options="{'no_edit': True, 'no_create': True, 'no_open': True}"/>
                             <field name="student_age"/>
                             <field name="student_gender" readonly="1" force_save="1"/>
                             <field name="date"/>
