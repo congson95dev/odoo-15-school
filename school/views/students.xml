@@ -95,6 +95,21 @@
                         <button id="action_url" string="Redirect To Github" name="redirect_to_github" type="object" class="btn-primary"/>
                     </header>
                     <sheet>
+                        <!-- smart button section -->
+                        <!-- this is a top left button inside form, which count and redirect -->
+                        <div class="oe_button_box" name="button_box">
+                            <!-- action to redirect is inside "name" -->
+                            <button name="action_open_calendar" type="object"
+                                class="oe_stat_button" icon="fa-calendar">
+                                <div class="o_stat_info">
+                                    <!-- show count number -->
+                                    <field name="student_calendar_count" class="o_stat_value"/>
+                                    <!-- show text "Calendars" or "Calendar" based on count number -->
+                                    <span class="o_stat_text" attrs="{'invisible': [('student_calendar_count', '&lt;', 2)]}"> Calendars</span>
+                                    <span class="o_stat_text" attrs="{'invisible': [('student_calendar_count', '&gt;', 1)]}"> Calendar</span>
+                                </div>
+                            </button>
+                        </div>
                         <!-- ribbon for archive / unarchive -->
                         <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                         <field name="photo" widget="image" class="oe_avatar"/>

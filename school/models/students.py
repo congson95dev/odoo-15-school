@@ -96,3 +96,17 @@ class Students(models.Model):
             'target': 'new',
             'url': 'https://github.com/saxsax1995/odoo-15-school',
         }
+
+    # smart button action
+    def action_open_calendar(self):
+        # redirect to calendar page
+        return {
+            'name': 'Calendars',
+            # add view_type to this action will have issue: No view found for act_window action undefined
+            # 'view_type': 'tree',
+            'view_mode': 'tree',
+            'res_model': 'school.calendar',
+            'type': 'ir.actions.act_window',
+            'target': 'current',
+            'domain': [('student_id', '=', self.id)]
+        }
