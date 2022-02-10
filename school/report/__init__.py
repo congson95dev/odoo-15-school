@@ -1,1 +1,1 @@
-from . import report_student_xlsx
+from . import report_student_xlsx, student_report

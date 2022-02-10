@@ -104,9 +104,13 @@ class Students(models.Model):
             'name': 'Calendars',
             # add view_type to this action will have issue: No view found for act_window action undefined
             # 'view_type': 'tree',
-            'view_mode': 'tree',
+            'view_mode': 'tree,form',
             'res_model': 'school.calendar',
             'type': 'ir.actions.act_window',
             'target': 'current',
-            'domain': [('student_id', '=', self.id)]
+            'domain': [('student_id', '=', self.id)],
+            # this will pass default student_id to the form view when you click "Create" button after go to list view by Smart Button
+            # so when you click "Create" button, the form will auto filled all the student data for you
+            # syntax: default_{some_field}
+            'context': {'default_student_id': self.id},
         }

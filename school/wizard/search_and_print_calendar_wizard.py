@@ -5,11 +5,20 @@ class SearchAndPrintCalendarWizard(models.TransientModel):
     _description = "Search and Print Calendar Wizard"
 
     student_id = fields.Many2one('school.students', string='Student', required=True)
-    date_from = fields.Datetime(string='Date From')
-    date_to = fields.Datetime(string='Date To')
+    date_from = fields.Date(string='Date From')
+    date_to = fields.Date(string='Date To')
 
     def school_print_calendars(self):
-        calendars_data = self.env['school.calendar'].search_read([('student_id','=',self.student_id.id)])
+        # combine search condition
+        search_conditions = []
+        if (self.student_id):
+            search_conditions += [('student_id','=',self.student_id.id)]
+        if (self.date_from):
+            search_conditions += [('date', '>=', self.date_from)]
+        if (self.date_to):
+            search_conditions += [('date', '<=', self.date_to)]
+
+        calendars_data = self.env['school.calendar'].search_read(search_conditions)
         # pass data to view
         data = {
             'form_data': self.read()[0],
