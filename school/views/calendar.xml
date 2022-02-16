@@ -26,6 +26,7 @@
                 <tree default_order="sequence asc" multi_edit="1">
                     <field name="sequence" readonly="1"/>
                     <field name="student_id"/>
+                    <field name="doctor_id"/>
                     <!-- use sum="Sum of Ages" to calculate sum and show at the bottom of column -->
                     <!-- use avg="Average of Ages" to calculate average and show at the bottom of column -->
                     <field name="student_age" avg="Average of Ages"/>
@@ -62,6 +63,7 @@
                             <!-- also, if you click on some exists record, it will show a button to view that record -->
                             <!-- options="{'no_open': True}" will make that button disappear-->
                             <field name="student_id" options="{'no_edit': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="doctor_id"/>
                             <field name="student_age"/>
                             <field name="student_gender" readonly="1" force_save="1"/>
                             <field name="date"/>

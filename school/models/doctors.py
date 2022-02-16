@@ -74,16 +74,16 @@ class Doctors(models.Model):
             result.append((record.id, name))
         return result
 
-    @api.constrains('name')
-    def check_name(self):
+    @api.constrains('doctor_id')
+    def check_doctor_id(self):
         # check if name exists in db, then throw error
         for record in self:
             # we need the ('id','!=',record.id) because we need to remove current record from the constrain
             # or else, it will always found the record
             # this only happen in contrains
-            doctor = self.env['school.doctors'].search([('name','=',record.name),('id','!=',record.id)])
+            doctor = self.env['school.doctors'].search([('doctor_id','=',record.doctor_id.id),('id','!=',record.id)])
             if (doctor):
-                raise ValidationError(_('Name %s already exists', self.name))
+                raise ValidationError(_('Doctor %s is already registered', self.name))
 
     # smart button action
     def action_open_calendar(self):

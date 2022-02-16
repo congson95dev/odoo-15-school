@@ -131,42 +131,42 @@
                             <!-- show archive / unarchive in form -->
                             <field name="active" invisible="1"/>
                         </group>
-<!--                        <notebook>-->
-<!--                            <page name="calendars" string="Calendars">-->
-<!--                                <field name="calendar_ids" readonly="1">-->
-<!--                                    <tree>-->
-<!--                                        <field name="sequence" readonly="1"/>-->
-<!--                                        <field name="doctor_id"/>-->
-<!--                                        <field name="doctor_age"/>-->
-<!--                                        <field name="doctor_gender"/>-->
-<!--                                        <field name="date"/>-->
-<!--                                        <field name="state"/>-->
-<!--                                    </tree>-->
-<!--                                    <form>-->
-<!--                                        <div class="oe_title">-->
-<!--                                            <h1>-->
-<!--                                                <field name="sequence" readonly="1"/>-->
-<!--                                            </h1>-->
-<!--                                        </div>-->
-<!--                                        <group>-->
-<!--                                            <field name="doctor_id"/>-->
-<!--                                            <field name="doctor_age"/>-->
-<!--                                            <field name="doctor_gender" readonly="1" force_save="1"/>-->
-<!--                                            <field name="date"/>-->
-<!--                                        </group>-->
-<!--                                    </form>-->
-<!--                                </field>-->
-<!--                            </page>-->
-<!--                        </notebook>-->
+                        <notebook>
+                            <page name="calendars" string="Calendars">
+                                <field name="calendar_ids" readonly="1">
+                                    <tree>
+                                        <field name="sequence" readonly="1"/>
+                                        <field name="student_id"/>
+                                        <field name="student_age"/>
+                                        <field name="student_gender"/>
+                                        <field name="date"/>
+                                        <field name="state"/>
+                                    </tree>
+                                    <form>
+                                        <div class="oe_title">
+                                            <h1>
+                                                <field name="sequence" readonly="1"/>
+                                            </h1>
+                                        </div>
+                                        <group>
+                                            <field name="student_id"/>
+                                            <field name="student_age"/>
+                                            <field name="student_gender" readonly="1" force_save="1"/>
+                                            <field name="date"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                     <!-- chatbox section -->
                     <!-- we need to inherit this 2 model inside our model to make this chatbox work -->
                     <!-- _inherit = ['mail.thread', 'mail.activity.mixin'] -->
-<!--                    <div class="oe_chatter">-->
-<!--                        <field name="message_follower_ids"/>-->
-<!--                        <field name="activity_ids"/>-->
-<!--                        <field name="message_ids"/>-->
-<!--                    </div>-->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
