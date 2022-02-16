@@ -114,6 +114,7 @@
                             </h1>
                         </div>
                         <group>
+                            <field name="doctor_id"/>
                             <field name="name"/>
                         </group>
                         <group>
@@ -191,12 +192,13 @@
                     <!-- filter for archive / unarchive -->
                     <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                     <separator/>
-<!--                    <group expand="0" string="Group By">-->
-<!--                        &lt;!&ndash; group by name is difference than field name, or else will be issue when set context in ir.actions.act_window below &ndash;&gt;-->
-<!--                        <filter string="Gender" name="group_doctor_gender" domain="[]" context="{'group_by': 'doctor_gender'}"/>-->
-<!--                    </group>-->
+                    <group expand="0" string="Group By">
+                        <!-- group by name is difference than field name, or else will be issue when set context in ir.actions.act_window below -->
+                        <filter string="Gender" name="group_doctor_gender" domain="[]" context="{'group_by': 'doctor_gender'}"/>
+                    </group>
                     <!-- search panel is a left sidebar filter -->
                     <searchpanel>
+                        <!-- add searchpanel doctor_gender to this view causing issue -->
 <!--                        <field name="doctor_gender" string="Gender" icon="fa-cutlery" color="#875A7B" enable_counters="1"/>-->
                         <field name="doctor_blood_group" select="multi" string="Blood Group" icon="fa-truck" enable_counters="1"/>
                     </searchpanel>
@@ -210,6 +212,7 @@
             <field name="view_mode">tree,form,kanban</field>
             <field name="domain">[]</field>
             <!-- set default group by and filter -->
+            <!-- add search_default_group_doctor_gender to this view causing issue -->
 <!--            <field name="context">{"search_default_group_doctor_gender": 1, "search_default_doctor_age_old": 1}</field>-->
             <field name="context">{"search_default_doctor_age_old": 1}</field>
             <field name="help" type="html">

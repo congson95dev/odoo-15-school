@@ -50,6 +50,7 @@ class Doctors(models.Model):
             # the name inside next_by_code is get by file data/sequence.xml
             vals['sequence'] = self.env['ir.sequence'].next_by_code('school.doctors') or _('New')
 
+        res = super(Doctors, self).create(vals)
         return res
 
     # override function copy
