@@ -14,6 +14,7 @@
     # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'report/student_report.xml',
         'report/student_report_template.xml',
         'report/calendar_report.xml',
@@ -21,11 +22,13 @@
         'wizard/create_calendar_wizard_view.xml',
         'wizard/search_and_print_calendar_wizard_view.xml',
         'views/students.xml',
+        'views/doctors.xml',
         'views/kids.xml',
         'views/genders.xml',
         'views/calendar.xml',
         'views/sale.xml',
-        'data/sequence.xml'
+        'data/sequence.xml',
+        'data/data.xml',
     ],
     # data files containing optionally loaded demonstration data
     # 'demo': [

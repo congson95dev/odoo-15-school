@@ -26,7 +26,9 @@
                 <tree default_order="sequence asc" multi_edit="1">
                     <field name="sequence" readonly="1"/>
                     <field name="student_id"/>
-                    <field name="student_age"/>
+                    <!-- use sum="Sum of Ages" to calculate sum and show at the bottom of column -->
+                    <!-- use avg="Average of Ages" to calculate average and show at the bottom of column -->
+                    <field name="student_age" avg="Average of Ages"/>
                     <field name="student_gender"/>
                     <field name="date"/>
                     <field name="state"/>

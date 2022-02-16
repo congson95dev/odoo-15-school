@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- create sample data for students -->
+        <record id="sample_data_student_11" model="school.students">
+            <field name="middle_name">test</field>
+            <field name="last_name">11</field>
+            <field name="student_age">20</field>
+            <field name="student_blood_group">B-</field>
+        </record>
+
+        <!-- create sample data for calendars -->
+        <record id="create_sample_data_student_1" model="school.calendar">
+            <!-- in ref, we need to choose id from student record -->
+            <field name="student_id" ref="sample_data_student_11"></field>
+            <field name="state">confirm</field>
+        </record>
+    </data>
+</odoo>
