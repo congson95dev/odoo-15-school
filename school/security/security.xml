@@ -10,8 +10,8 @@
         </record>
 
         <!-- create new user group -->
-        <record id="school_student" model="res.groups">
-            <field name="name">School Student</field>
+        <record id="school_teacher" model="res.groups">
+            <field name="name">School Teacher</field>
             <!-- based on above category (school_management) -->
             <field name="category_id" ref="school_management"/>
         </record>
@@ -21,6 +21,41 @@
             <field name="name">School Manager</field>
             <!-- based on above category (school_management) -->
             <field name="category_id" ref="school_management"/>
+            <!-- don't know what this is for -->
+            <!-- look like with this, school_manager is inherit all the rules from school_teacher -->
+<!--            <field name="implied_ids" eval="[(4, ref('school_teacher'))]"/>-->
+        </record>
+
+        <!-- Create new record rule -->
+        <!-- Teacher should only see their calendar -->
+        <record id="school_teacher_record_rule" model="ir.rule">
+            <field name="name">School Teacher should only see their Calendar</field>
+            <!-- model which we want apply this record rule -->
+            <!-- in this example, we want to affect to calendar, so we use calendar -->
+            <field name="model_id" ref="model_school_calendar"/>
+            <!-- condition -->
+            <!-- in this module, user is teacher, so in this example, we will show calendar based on current user -->
+            <!-- teacher id = user id => show only calendar of current user -->
+            <!-- Why is teacher_id.teacher_id? it's because: -->
+            <!-- teacher_id in the first place is a object, and then we need to access to it through variable teacher_id from model school.teachers -->
+            <!-- => teacher_id.teacher_id -->
+            <field name="domain_force">[('teacher_id.teacher_id','=',user.id)]</field>
+            <!-- apply for school_teacher user group -->
+            <field name="groups" eval="[(4, ref('school_teacher'))]"/>
+        </record>
+
+        <!-- Create new record rule -->
+        <!-- Manager can see all calendar -->
+        <record id="school_manager_record_rule" model="ir.rule">
+            <field name="name">School Manager can see all Calendar</field>
+            <!-- model which we want apply this record rule -->
+            <!-- in this example, we want to affect to calendar, so we use calendar -->
+            <field name="model_id" ref="model_school_calendar"/>
+            <!-- condition -->
+            <!-- empty => show all calendar -->
+            <field name="domain_force">[]</field>
+            <!-- apply for school_manager user group -->
+            <field name="groups" eval="[(4, ref('school_manager'))]"/>
         </record>
     </data>
 </odoo>
