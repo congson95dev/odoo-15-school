@@ -5,8 +5,8 @@
         <!-- add "Create Calendar" button -->
         <record id="action_create_calendar" model="ir.actions.server">
             <field name="name">Create Calendar</field>
-            <field name="model_id" ref="model_school_doctors"/>
-            <field name="binding_model_id" ref="school.model_school_doctors"/>
+            <field name="model_id" ref="model_school_teachers"/>
+            <field name="binding_model_id" ref="school.model_school_teachers"/>
             <!-- set this action is appear in form or list -->
             <field name="binding_view_types">form</field>
             <field name="state">code</field>
@@ -22,9 +22,9 @@
             </field>
         </record>
 
-        <record id="school_doctors_tree" model="ir.ui.view">
-            <field name="name">school.doctors.tree</field>
-            <field name="model">school.doctors</field>
+        <record id="school_teachers_tree" model="ir.ui.view">
+            <field name="name">school.teachers.tree</field>
+            <field name="model">school.teachers</field>
             <field name="arch" type="xml">
                 <!-- multi_edit is to allow multi edit in tree view -->
                 <!-- add expand="1" to show all the records at first loading page -->
@@ -33,27 +33,27 @@
                     <field name="sequence" readonly="1" optional="show"/>
                     <field name="name" optional="show"/>
                     <field name="photo" optional="show"/>
-                    <field name="doctor_age" optional="show"/>
-                    <field name="doctor_dob" optional="show"/>
-                    <field name="doctor_gender" optional="show"/>
-                    <field name="doctor_blood_group" optional="show"/>
+                    <field name="teacher_age" optional="show"/>
+                    <field name="teacher_dob" optional="show"/>
+                    <field name="teacher_gender" optional="show"/>
+                    <field name="teacher_blood_group" optional="show"/>
                     <field name="nationality" optional="show"/>
-                    <field name="doctor_calendar_count" optional="show"/>
+                    <field name="teacher_calendar_count" optional="show"/>
                 </tree>
             </field>
         </record>
 
-        <record id="school_doctors_kanban" model="ir.ui.view" >
-            <field name="name">school.doctors.kanban</field>
-            <field name="model">school.doctors</field>
+        <record id="school_teachers_kanban" model="ir.ui.view" >
+            <field name="name">school.teachers.kanban</field>
+            <field name="model">school.teachers</field>
             <field name="arch" type="xml">
                 <kanban>
                     <field name="name"/>
                     <field name="photo"/>
-                    <field name="doctor_age"/>
-                    <field name="doctor_dob"/>
-                    <field name="doctor_gender"/>
-                    <field name="doctor_blood_group"/>
+                    <field name="teacher_age"/>
+                    <field name="teacher_dob"/>
+                    <field name="teacher_gender"/>
+                    <field name="teacher_blood_group"/>
                     <field name="nationality"/>
                     <templates>
                         <t t-name="kanban-box">
@@ -66,11 +66,11 @@
                                         </li>
                                         <li>
                                             Age:
-                                            <field name="doctor_age"/>
+                                            <field name="teacher_age"/>
                                         </li>
                                         <li>
                                             Gender:
-                                            <field name="doctor_gender"/>
+                                            <field name="teacher_gender"/>
                                         </li>
                                     </ul>
                                 </div>
@@ -81,11 +81,11 @@
             </field>
         </record>
 
-        <record id="school_doctors_form" model="ir.ui.view">
-            <field name="name">school.doctors.form</field>
-            <field name="model">school.doctors</field>
+        <record id="school_teachers_form" model="ir.ui.view">
+            <field name="name">school.teachers.form</field>
+            <field name="model">school.teachers</field>
             <field name="arch" type="xml">
-                <form string="Doctor View/Edit">
+                <form string="Teachers View/Edit">
                     <header>
                         <button id="create_calendar" string="Create Calendar" name="%(action_school_create_calendar)d" type="action" class="btn-primary"/>
                     </header>
@@ -98,10 +98,10 @@
                                 class="oe_stat_button" icon="fa-calendar">
                                 <div class="o_stat_info">
                                     <!-- show count number -->
-                                    <field name="doctor_calendar_count" class="o_stat_value"/>
+                                    <field name="teacher_calendar_count" class="o_stat_value"/>
                                     <!-- show text "Calendars" or "Calendar" based on count number -->
-                                    <span class="o_stat_text" attrs="{'invisible': [('doctor_calendar_count', '&lt;', 2)]}"> Calendars</span>
-                                    <span class="o_stat_text" attrs="{'invisible': [('doctor_calendar_count', '&gt;', 1)]}"> Calendar</span>
+                                    <span class="o_stat_text" attrs="{'invisible': [('teacher_calendar_count', '&lt;', 2)]}"> Calendars</span>
+                                    <span class="o_stat_text" attrs="{'invisible': [('teacher_calendar_count', '&gt;', 1)]}"> Calendar</span>
                                 </div>
                             </button>
                         </div>
@@ -114,20 +114,20 @@
                             </h1>
                         </div>
                         <group>
-                            <field name="doctor_id"/>
+                            <field name="teacher_id"/>
                             <field name="name"/>
                         </group>
                         <group>
-                            <field name="doctor_age"/>
-                            <field name="doctor_dob"/>
+                            <field name="teacher_age"/>
+                            <field name="teacher_dob"/>
                         </group>
                         <group>
-                            <field name="doctor_gender" invisible="context.get('hide_gender')"/>
-                            <field name="doctor_blood_group"/>
+                            <field name="teacher_gender" invisible="context.get('hide_gender')"/>
+                            <field name="teacher_blood_group"/>
                         </group>
                         <group>
                             <field name="nationality"/>
-                            <field name="doctor_calendar_count"/>
+                            <field name="teacher_calendar_count"/>
                             <!-- show archive / unarchive in form -->
                             <field name="active" invisible="1"/>
                         </group>
@@ -171,58 +171,60 @@
             </field>
         </record>
 
-        <record id="school_doctors_search" model="ir.ui.view">
-            <field name="name">school.doctors.search</field>
-            <field name="model">school.doctors</field>
+        <record id="school_teachers_search" model="ir.ui.view">
+            <field name="name">school.teachers.search</field>
+            <field name="model">school.teachers</field>
             <field name="arch" type="xml">
-                <search string="Doctors">
+                <search string="Teachers">
                     <field name="name"/>
                     <field name="photo"/>
-                    <field name="doctor_age"/>
-                    <field name="doctor_dob"/>
-                    <field name="doctor_gender"/>
-                    <field name="doctor_blood_group"/>
+                    <field name="teacher_age"/>
+                    <field name="teacher_dob"/>
+                    <field name="teacher_gender"/>
+                    <field name="teacher_blood_group"/>
                     <field name="nationality"/>
                     <separator/>
-                    <filter name="doctor_age_old" string="Age More Than 40" domain="[('doctor_age', '>=', 40)]"/>
-                    <filter name="doctor_age_young" string="Age Less Than 40" domain="[('doctor_age', '&lt;', 40)]"/>
-                    <filter name="doctor_gender" string="Male" domain="[('doctor_gender', '=', 'male')]"/>
-                    <filter name="doctor_gender" string="Female" domain="[('doctor_gender', '=', 'female')]"/>
+                    <filter name="teacher_age_old" string="Age More Than 40" domain="[('teacher_age', '>=', 40)]"/>
+                    <filter name="teacher_age_young" string="Age Less Than 40" domain="[('teacher_age', '&lt;', 40)]"/>
+                    <filter name="teacher_gender" string="Male" domain="[('teacher_gender', '=', 'male')]"/>
+                    <filter name="teacher_gender" string="Female" domain="[('teacher_gender', '=', 'female')]"/>
                     <separator/>
                     <!-- filter for archive / unarchive -->
                     <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                     <separator/>
                     <group expand="0" string="Group By">
                         <!-- group by name is difference than field name, or else will be issue when set context in ir.actions.act_window below -->
-                        <filter string="Gender" name="group_doctor_gender" domain="[]" context="{'group_by': 'doctor_gender'}"/>
+                        <filter string="Gender" name="group_teacher_gender" domain="[]" context="{'group_by': 'teacher_gender'}"/>
                     </group>
                     <!-- search panel is a left sidebar filter -->
                     <searchpanel>
-                        <!-- add searchpanel doctor_gender to this view causing issue -->
-<!--                        <field name="doctor_gender" string="Gender" icon="fa-cutlery" color="#875A7B" enable_counters="1"/>-->
-                        <field name="doctor_blood_group" select="multi" string="Blood Group" icon="fa-truck" enable_counters="1"/>
+                        <!-- add searchpanel teacher_gender to this view causing issue -->
+                        <!-- https://stackoverflow.com/questions/71138392/field-is-not-a-stored-field-only-stored-fields-regular-or-many2many-are-valid -->
+<!--                        <field name="teacher_gender" string="Gender" icon="fa-cutlery" color="#875A7B" enable_counters="1"/>-->
+                        <field name="teacher_blood_group" select="multi" string="Blood Group" icon="fa-truck" enable_counters="1"/>
                     </searchpanel>
                 </search>
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_school_doctors">
-            <field name="name">Doctors</field>
-            <field name="res_model">school.doctors</field>
+        <record model="ir.actions.act_window" id="action_school_teachers">
+            <field name="name">Teachers</field>
+            <field name="res_model">school.teachers</field>
             <field name="view_mode">tree,form,kanban</field>
             <field name="domain">[]</field>
             <!-- set default group by and filter -->
-            <!-- add search_default_group_doctor_gender to this view causing issue -->
-<!--            <field name="context">{"search_default_group_doctor_gender": 1, "search_default_doctor_age_old": 1}</field>-->
-            <field name="context">{"search_default_doctor_age_old": 1}</field>
+            <!-- add search_default_group_teacher_gender to this view causing issue -->
+            <!-- https://stackoverflow.com/questions/71138392/field-is-not-a-stored-field-only-stored-fields-regular-or-many2many-are-valid -->
+<!--            <field name="context">{"search_default_group_teacher_gender": 1, "search_default_teacher_age_old": 1}</field>-->
+            <field name="context">{"search_default_teacher_age_old": 1}</field>
             <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create new doctor
+                <p class="oe_view_nocontent_create">Create new teacher
                 </p>
             </field>
         </record>
 
-        <menuitem id="menu_doctors" name="Doctors" parent="menu_school"/>
-        <menuitem id="school_doctors" name="Doctors" parent="menu_doctors"
-                  action="action_school_doctors"/>
+        <menuitem id="menu_teachers" name="Teachers" parent="menu_school"/>
+        <menuitem id="school_teachers" name="Teachers" parent="menu_teachers"
+                  action="action_school_teachers"/>
     </data>
 </odoo>

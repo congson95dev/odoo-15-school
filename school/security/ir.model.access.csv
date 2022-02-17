@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_school_students,access.school.students,model_school_students,,1,1,1,1
-access_school_doctors,access.school.doctors,model_school_doctors,,1,1,1,1
+access_school_teachers,access.school.teachers,model_school_teachers,,1,1,1,1
 access_school_calendar,access.school.calendar,model_school_calendar,,1,1,1,1
 access_school_create_calendar_wizard,access.school.create.calendar.wizard,model_school_create_calendar_wizard,,1,1,1,1
 access_school_search_and_print_calendar_wizard,access.school.search.and.print.calendar.wizard,model_school_search_and_print_calendar_wizard,,1,1,1,1

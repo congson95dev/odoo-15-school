@@ -13,6 +13,9 @@
                     </div>
                     <group>
                         <field name="student_id"/>
+                        <!-- need to hide this field when we standing on model "school.students" -->
+                        <!-- but i still don't know how, maybe we should use js -->
+                        <field name="teacher_id"/>
                         <field name="student_age" readonly="1"/>
                         <field name="student_gender" readonly="1"/>
                         <field name="date"/>

@@ -10,10 +10,10 @@
             <field name="company_id" eval="False"/>
         </record>
 
-        <!-- Sequences for school.doctors -->
-        <record id="seq_school_doctors" model="ir.sequence">
-            <field name="name">Doctors Sequence</field>
-            <field name="code">school.doctors</field>
+        <!-- Sequences for school.teachers -->
+        <record id="seq_school_teachers" model="ir.sequence">
+            <field name="name">Teachers Sequence</field>
+            <field name="code">school.teachers</field>
             <field name="prefix">D</field>
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>

@@ -22,7 +22,7 @@
         'wizard/create_calendar_wizard_view.xml',
         'wizard/search_and_print_calendar_wizard_view.xml',
         'views/students.xml',
-        'views/doctors.xml',
+        'views/teachers.xml',
         'views/kids.xml',
         'views/genders.xml',
         'views/calendar.xml',

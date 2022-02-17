@@ -6,6 +6,7 @@ class CreateCalendarWizard(models.TransientModel):
 
     sequence = fields.Char(string='Sequence', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
     student_id = fields.Many2one('school.students', string='Student', required=True)
+    teacher_id = fields.Many2one('school.teachers', string='Teachers', required=True)
     student_age = fields.Integer(string='Age', related='student_id.student_age')
     student_gender = fields.Selection([('m', 'Male'), ('f', 'Female'), ('o', 'Other')], string='Gender', related='student_id.student_gender')
     date = fields.Datetime(string='Date')
@@ -16,6 +17,7 @@ class CreateCalendarWizard(models.TransientModel):
         vals = {
             'sequence': self.sequence,
             'student_id': self.student_id.id,
+            'teacher_id': self.teacher_id.id,
             'student_age': self.student_age,
             'student_gender': self.student_gender,
             'date': self.date
@@ -59,17 +61,23 @@ class CreateCalendarWizard(models.TransientModel):
         res = super(CreateCalendarWizard, self).create(vals)
         return res
 
-    # set default value for popup by current student
+    # set default value for popup by current student or teacher
     @api.model
     def default_get(self, fields_list):
         res = super(CreateCalendarWizard, self).default_get(fields_list)
         # get id by self._context
-        student_id = self._context.get('active_id')
-        # load by id
-        student = self.env['school.students'].search([('id','=',student_id)])
-        # add data
-        res['student_id'] = student.id
-        res['student_age'] = student.student_age
-        res['student_gender'] = student.student_gender
+        active_id = self._context.get('active_id')
+        if (self.env.context['active_model'] == 'school.students'):
+            # load by id
+            student = self.env['school.students'].search([('id','=',active_id)])
+            # add data
+            res['student_id'] = student.id
+            res['student_age'] = student.student_age
+            res['student_gender'] = student.student_gender
+        elif (self.env.context['active_model'] == 'school.teachers'):
+            # load by id
+            teacher = self.env['school.teachers'].search([('id', '=', active_id)])
+            # add data
+            res['teacher_id'] = teacher.id
 
         return res

@@ -15,7 +15,7 @@ class Calendar(models.Model):
 
     sequence = fields.Char(string='Sequence', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'), tracking=True)
     student_id = fields.Many2one('school.students', string='Student', required=True, tracking=True)
-    doctor_id = fields.Many2one('school.doctors', string='Doctor', required=True, tracking=True)
+    teacher_id = fields.Many2one('school.teachers', string='Teachers', required=True, tracking=True)
     student_age = fields.Integer(string='Age', related='student_id.student_age', tracking=True)
     student_gender = fields.Selection([('m', 'Male'), ('f', 'Female'), ('o', 'Other')], string='Gender', tracking=True)
     date = fields.Datetime(string='Date', tracking=True)

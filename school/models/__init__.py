@@ -1,1 +1,1 @@
-from . import students, sale, calendar, doctors
+from . import students, sale, calendar, teachers
