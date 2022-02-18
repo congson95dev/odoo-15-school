@@ -115,3 +115,6 @@ class Students(models.Model):
             # syntax: default_{some_field}
             'context': {'default_student_id': self.id},
         }
+
+    def run_function_directly(self):
+        print('successfully run function')

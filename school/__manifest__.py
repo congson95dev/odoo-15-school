@@ -27,6 +27,7 @@
         'views/genders.xml',
         'views/calendar.xml',
         'views/sale.xml',
+        'views/function.xml',
         'data/sequence.xml',
         'data/data.xml',
         'data/mail_template_data.xml',
