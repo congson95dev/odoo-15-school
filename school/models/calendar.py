@@ -75,6 +75,12 @@ class Calendar(models.Model):
     def count_jobs(self):
         return self.env['calendar.jobs'].search_count([('calendar_id','=',self.id)])
 
+    def send_calendar_info_email(self):
+        # get email template id by record id in data/mail_template_data.xml
+        template_id = self.env.ref('school.email_template_calendar_info').id
+        # send email by function send_mail
+        self.env['mail.template'].browse(template_id).send_mail(self.id, force_send=True)
+
 # this class is created for serve one2many field "calendar_jobs_ids" in model above
 class CalendarJobs(models.Model):
     _name = "calendar.jobs"

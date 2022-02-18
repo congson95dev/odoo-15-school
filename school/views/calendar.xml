@@ -47,6 +47,8 @@
                         <button id="button_confirm" name="action_confirm" string="Set To Confirm" type="object" states="draft" class="btn-primary"/>
                         <button id="button_done" name="action_done" string="Set To Done" type="object" states="confirm" class="btn-primary"/>
                         <button id="button_cancel" name="action_cancel" string="Set To Cancel" type="object" states="draft,confirm,done"/>
+                        <button id="button_send_calendar_info_email" name="send_calendar_info_email" string="Send Calendar Information Email"
+                                type="object" class="oe_highlight"/>
                         <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
                     </header>
                     <sheet>

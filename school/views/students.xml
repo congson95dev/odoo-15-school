@@ -122,6 +122,7 @@
                             <field name="name"/>
                             <field name="middle_name"/>
                             <field name="last_name"/>
+                            <field name="email"/>
                         </group>
                         <group>
                             <field name="student_age"/>

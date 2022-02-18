@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_template_calendar_info" model="mail.template">
+            <field name="name">School: Send Calendar Information Email</field>
+            <field name="model_id" ref="school.model_school_calendar"/>
+            <field name="subject">Student [{{ object.student_id.sequence or 'n/a' }}] {{ object.student_id.name or 'n/a' }} Calendar Information
+            </field>
+            <!-- Why is teacher_id.teacher_id? it's because: -->
+            <!-- we are standing in school.calendar model, so we have access from step to step -->
+            <!-- teacher_id in the first place is where we access from model school.calendar to model school.teachers -->
+            <!-- then we access to teacher_id in the second place that we access from model school.teachers to model users -->
+            <!-- then from model users, we get email -->
+            <!-- => teacher_id.teacher_id -->
+            <field name="email_from">{{ (object.teacher_id.teacher_id.email) }}</field>
+            <field name="email_to">{{ (object.student_id.email) or 'fudothedev@gmail.com'}}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear, {{ object.student_id.name or 'n/a' }}
+                        <br/>
+                        <br/>
+                        Here is your calendar information:
+                        <br/>
+                        <br/>
+                        Do not hesitate to contact us if you have any questions.
+                        <br/>
+                    </p>
+                </div>
+            </field>
+            <!-- attach pdf to email -->
+            <!-- ref is record id getted from report/calendar_report.xml -->
+<!--            <field name="report_template" ref="action_report_calendar"/>-->
+            <!-- set pdf name -->
+<!--            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>-->
+        </record>
+    </data>
+</odoo>

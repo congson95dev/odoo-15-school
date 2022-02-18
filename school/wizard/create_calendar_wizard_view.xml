@@ -13,9 +13,8 @@
                     </div>
                     <group>
                         <field name="student_id"/>
-                        <!-- need to hide this field when we standing on model "school.students" -->
-                        <!-- but i still don't know how, maybe we should use js -->
-                        <field name="teacher_id"/>
+                        <!-- hide this field when current model is "school.teachers" -->
+                        <field name="teacher_id" invisible="context.get('active_model')=='school.teachers'"/>
                         <field name="student_age" readonly="1"/>
                         <field name="student_gender" readonly="1"/>
                         <field name="date"/>

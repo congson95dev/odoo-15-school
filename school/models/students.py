@@ -21,6 +21,7 @@ class Students(models.Model):
     name = fields.Char(string='Name', tracking=True)
     middle_name = fields.Char(string='Middle Name', required=True, tracking=True)
     last_name = fields.Char(string='Last Name', required=True, tracking=True)
+    email = fields.Char(string='Email', required=False, tracking=True)
     photo = fields.Binary(string='Photo', tracking=True)
     student_age = fields.Integer(string='Age', tracking=True, copy=False)
     student_dob = fields.Date(string="Date of Birth", tracking=True)

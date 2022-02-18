@@ -67,14 +67,17 @@ class CreateCalendarWizard(models.TransientModel):
         res = super(CreateCalendarWizard, self).default_get(fields_list)
         # get id by self._context
         active_id = self._context.get('active_id')
-        if (self.env.context['active_model'] == 'school.students'):
+        active_model = self.env.context.get('active_model')
+        if (active_model == 'school.students'):
+            # if current model is school.students, then load student data by current student
             # load by id
             student = self.env['school.students'].search([('id','=',active_id)])
             # add data
             res['student_id'] = student.id
             res['student_age'] = student.student_age
             res['student_gender'] = student.student_gender
-        elif (self.env.context['active_model'] == 'school.teachers'):
+        elif (active_model == 'school.teachers'):
+            # if current model is school.teachers, then load teacher data by current teacher
             # load by id
             teacher = self.env['school.teachers'].search([('id', '=', active_id)])
             # add data

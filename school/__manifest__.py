@@ -29,6 +29,7 @@
         'views/sale.xml',
         'data/sequence.xml',
         'data/data.xml',
+        'data/mail_template_data.xml',
     ],
     # data files containing optionally loaded demonstration data
     # 'demo': [
