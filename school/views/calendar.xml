@@ -47,8 +47,9 @@
                         <button id="button_confirm" name="action_confirm" string="Set To Confirm" type="object" states="draft" class="btn-primary"/>
                         <button id="button_done" name="action_done" string="Set To Done" type="object" states="confirm" class="btn-primary"/>
                         <button id="button_cancel" name="action_cancel" string="Set To Cancel" type="object" states="draft,confirm,done"/>
+                        <!-- "groups" is to set this button visible to the selected user group only, and hide to the others -->
                         <button id="button_send_calendar_info_email" name="send_calendar_info_email" string="Send Calendar Information Email"
-                                type="object" class="oe_highlight"/>
+                                type="object" class="oe_highlight" groups="school.school_manager"/>
                         <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
                     </header>
                     <sheet>

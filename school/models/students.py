@@ -58,6 +58,12 @@ class Students(models.Model):
         res = super(Students, self).create(vals)
         return res
 
+    # override function write (write = update)
+    def write(self, vals):
+        print('successfully override write function')
+        res = super(Students, self).write(vals)
+        return res
+
     # override function copy
     def copy(self, default=None):
         self.ensure_one()

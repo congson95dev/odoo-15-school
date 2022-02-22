@@ -6,9 +6,11 @@
             <field name="model_id" ref="model_school_students"/>
             <field name="binding_model_id" ref="school.model_school_students"/>
             <field name="state">code</field>
+            <!-- function called -->
             <field name="code">model.run_function_directly()</field>
         </record>
 
+        <!-- Example of run function directly from menu item -->
         <menuitem id="school_students_run_function_directly" name="Run Function Directly" parent="menu_students"
                   action="action_school_run_function_directly"/>
     </data>

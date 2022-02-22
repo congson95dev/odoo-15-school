@@ -17,10 +17,14 @@
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
-                        Dear, {{ object.student_id.name or 'n/a' }}
+                        Dear, <t t-out="object.student_id.name or 'n/a'"></t>
                         <br/>
                         <br/>
                         Here is your calendar information:
+                        <br/>
+                        Date: <t t-out="object.date or 'n/a'"></t>
+                        <br/>
+                        State: <t t-out="object.state or 'n/a'"></t>
                         <br/>
                         <br/>
                         Do not hesitate to contact us if you have any questions.

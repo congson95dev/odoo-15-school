@@ -61,6 +61,20 @@
                                                         <span t-field="o.sequence"/>
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Barcode:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <!-- barcode rendered by o.sequence -->
+                                                        <div t-out="o.sequence" t-options="{'widget': 'barcode', 'symbology': 'auto', 'img_style': 'width:33mm;height:7mm'}"/>
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </td>
                                     </tr>
