@@ -81,6 +81,10 @@ class Calendar(models.Model):
         # send email by function send_mail
         self.env['mail.template'].browse(template_id).send_mail(self.id, force_send=True)
 
+    def clear_all_jobs(self):
+        for record in self:
+            record.calendar_jobs_ids = [(5,0,0)]
+
 # this class is created for serve one2many field "calendar_jobs_ids" in model above
 class CalendarJobs(models.Model):
     _name = "calendar.jobs"

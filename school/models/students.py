@@ -1,5 +1,7 @@
 from odoo import api, models, fields, _
 from odoo.exceptions import ValidationError
+from datetime import datetime
+import pytz
 
 class Students(models.Model):
     _name = "school.students"
@@ -30,6 +32,7 @@ class Students(models.Model):
         [('A+', 'A+ve'), ('B+', 'B+ve'), ('O+', 'O+ve'), ('AB+', 'AB+ve'),
          ('A-', 'A-ve'), ('B-', 'B-ve'), ('O-', 'O-ve'), ('AB-', 'AB-ve')],
         string='Blood Group', tracking=True)
+    # add store=True will make compute function not working anymore, don't know how to fix it yet, i've removed it for now
     student_calendar_count = fields.Integer(string="Calendar Count", compute="_compute_student_calendar_count", tracking=True)
     nationality = fields.Many2one('res.country', string='Nationality', tracking=True)
     calendar_ids = fields.One2many('school.calendar', 'student_id', string="Calendars")
@@ -124,3 +127,15 @@ class Students(models.Model):
 
     def run_function_directly(self):
         print('successfully run function')
+
+        # convert datetime variable to user timezone
+        # (not working because issue ValueError: <class 'AttributeError'>: "'str' object has no attribute 'tzinfo'" while evaluating)
+        # i guess we need a variable to be datetime format before running this convert code
+
+        # original_date = '2006-10-25 14:30:59'
+        # user_tz = pytz.timezone(self.env.context.get('tz') or self.env.user.tz)
+        # converted_date = pytz.utc.localize(original_date).astimezone(user_tz)
+        # print('converted date: ' + converted_date)
+
+    def test_cron_function(self):
+        print('successfully run cron function')

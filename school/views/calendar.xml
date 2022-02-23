@@ -50,6 +50,9 @@
                         <!-- "groups" is to set this button visible to the selected user group only, and hide to the others -->
                         <button id="button_send_calendar_info_email" name="send_calendar_info_email" string="Send Calendar Information Email"
                                 type="object" class="oe_highlight" groups="school.school_manager"/>
+                        <button id="button_clear_all_jobs" name="clear_all_jobs" string="Clear All Jobs"
+                                confirm="Are you sure to clear all the jobs?"
+                                type="object" class="oe_highlight"/>
                         <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
                     </header>
                     <sheet>
@@ -128,9 +131,6 @@
                   action="action_school_calendar"/>
         <menuitem id="school_create_calendar" name="Create Calendar" parent="menu_school_calendar"
                   action="action_school_create_calendar"/>
-        <!-- Not working -->
-        <!-- Try to create a report from a wizard, but it's not working -->
-        <!-- https://stackoverflow.com/questions/71047099/create-report-from-wizard-in-odoo-15 -->
         <menuitem id="school_search_and_print_calendar" name="Search and Print Calendar" parent="menu_school_calendar"
                   action="action_school_search_and_print_calendar"/>
     </data>

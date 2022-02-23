@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- noupdate="1" is for run only once -->
+    <data noupdate="0">
+        <record id="ir_cron_test_cron_function" model="ir.cron">
+            <field name="name">School: Test Cron Function</field>
+            <field name="model_id" ref="model_school_students"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.test_cron_function()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+<!--            <field name="nextcall" >2022-02-22 11:30:00</field>-->
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

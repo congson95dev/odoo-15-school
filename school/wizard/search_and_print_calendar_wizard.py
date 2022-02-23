@@ -8,6 +8,13 @@ class SearchAndPrintCalendarWizard(models.TransientModel):
     date_from = fields.Date(string='Date From')
     date_to = fields.Date(string='Date To')
 
+    def school_test_button(self):
+        print('test button clicked')
+        # try to ignore close popup after clicking this button, but not working
+        # return {
+        #     "type": "ir.actions.do_nothing"
+        # }
+
     def school_print_calendars(self):
         # combine search condition
         search_conditions = []

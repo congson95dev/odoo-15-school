@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- inherit report-->
+    <!-- inherit_id is the id of in-->
+    <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+        <!-- override first element: [1] -->
+        <!-- 1 is first element -->
+        <xpath expr="//strong[1]" position="replace">
+            <strong>Invoicing and Shipping Address (This is replaced text by module School):</strong>
+        </xpath>
+        <!-- override element by multi selection -->
+        <!-- last() is to get last element -->
+        <xpath expr="//div[@id='informations']/div[last()]/p" position="replace">
+            <strong>This text has been replaced by module School</strong>
+        </xpath>
+    </template>
+</odoo>

@@ -19,6 +19,7 @@
         'report/student_report_template.xml',
         'report/calendar_report.xml',
         'report/calendar_report_template.xml',
+        'report/sale_report_templates_inherit.xml',
         'wizard/create_calendar_wizard_view.xml',
         'wizard/search_and_print_calendar_wizard_view.xml',
         'views/students.xml',
@@ -28,8 +29,10 @@
         'views/calendar.xml',
         'views/sale.xml',
         'views/function.xml',
+        'views/students_template.xml',
         'data/sequence.xml',
         'data/data.xml',
+        'data/cron.xml',
         'data/mail_template_data.xml',
     ],
     # data files containing optionally loaded demonstration data

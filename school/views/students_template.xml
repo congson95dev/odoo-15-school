@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="school_students_list" name="School Students List">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Students List:</h1>
+                <table class="table table-condensed" style="border: 3px solid black !important;">
+                    <thead>
+                        <tr>
+                            <th name="th_sequence" class="text-left">
+                                <span>Sequence</span>
+                            </th>
+                            <th name="th_name" class="text-left">
+                                <span>Name</span>
+                            </th>
+                            <th name="th_email" class="text-left">
+                                <span>Email</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="students" t-as="student">
+                        <tr>
+                            <td>
+                                <span t-field="student.sequence"/>
+                            </td>
+                            <td>
+                                <span t-field="student.name"/>
+                            </td>
+                            <td>
+                                <span t-field="student.email"/>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>
