@@ -30,6 +30,7 @@
         'views/sale.xml',
         'views/function.xml',
         'views/students_template.xml',
+        'views/settings.xml',
         'data/sequence.xml',
         'data/data.xml',
         'data/cron.xml',

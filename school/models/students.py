@@ -10,6 +10,11 @@ class Students(models.Model):
     # when you inherit other modules, you must add it in depends in __manifest__.py
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    # call to system configuration
+    # have to define the function before we call it
+    def _get_default_age(self):
+        return self.env['ir.config_parameter'].sudo().get_param('school.school_student_default_age')
+
     # tracking=True is track whenever you change the data of record
     # it will make a note that show what has been changed in chatbox in bottom of the edit form view
     # but you will need to make a chatbox so this tracking note can be show
@@ -25,7 +30,8 @@ class Students(models.Model):
     last_name = fields.Char(string='Last Name', required=True, tracking=True)
     email = fields.Char(string='Email', required=False, tracking=True)
     photo = fields.Binary(string='Photo', tracking=True)
-    student_age = fields.Integer(string='Age', tracking=True, copy=False)
+    # default=_get_default_age is set default by a function, and that function call to system configuration param which we set earlier
+    student_age = fields.Integer(string='Age', tracking=True, copy=False, default=_get_default_age)
     student_dob = fields.Date(string="Date of Birth", tracking=True)
     student_gender = fields.Selection([('m', 'Male'), ('f', 'Female'), ('o', 'Other')], string='Gender', tracking=True)
     student_blood_group = fields.Selection(
