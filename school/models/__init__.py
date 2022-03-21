@@ -1,1 +1,1 @@
-from . import students, sale, calendar, teachers, settings
+from . import students, inherit_model, calendar, teachers, settings

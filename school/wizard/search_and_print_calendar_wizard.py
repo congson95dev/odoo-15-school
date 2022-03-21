@@ -33,7 +33,8 @@ class SearchAndPrintCalendarWizard(models.TransientModel):
         }
         # call report action
         # this action is get from report/calendar_report.xml
-        report_action = self.env.ref('school.action_report_calendar').report_action(self, data=data)
+        # .with_context(landscape=True) is to make the pdf to become horizontal, if landscape=False, pdf will become vertical
+        report_action = self.env.ref('school.action_report_calendar').with_context(landscape=True).report_action(self, data=data)
 
         return report_action
 

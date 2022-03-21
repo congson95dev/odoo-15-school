@@ -25,6 +25,12 @@
                                         <label string="Default Age" for="school_student_default_age"/>
                                         <field name="school_student_default_age"/>
                                     </div>
+                                    <!-- Trying to make Many2many field in settings, but doesn't work -->
+                                    <!-- Link and issue: https://www.youtube.com/watch?v=-n7Ttx1Czdw&list=PLqRRLx0cl0hoJhjFWkFYowveq2Zn55dhM&index=96 -->
+<!--                                    <div class="content-group" attrs="{'invisible': [('school_student_enable_configuration','=',False)]}">-->
+<!--                                        <label string="Default Product" for="product_default"/>-->
+<!--                                        <field name="product_default" widget="many2many_tags"/>-->
+<!--                                    </div>-->
                                 </div>
                             </div>
                         </div>

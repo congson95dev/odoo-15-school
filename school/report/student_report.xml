@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- custom pager format -->
+        <record id="paperformat_student_report" model="report.paperformat">
+            <field name="name">Custom Paperformat for the Student report</field>
+            <field name="default" eval="False"/>
+            <field name="disable_shrinking" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <!-- this one is to make the pdf to become horizontal, if landscape=False, pdf will become vertical -->
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="dpi">96</field>
+        </record>
+
         <!-- pdf version -->
         <record id="action_report_student" model="ir.actions.report">
             <!-- this field will show as name of the button,
@@ -20,6 +37,8 @@
             <!-- not sure what this for -->
             <field name="binding_model_id" ref="model_school_students"/>
             <field name="binding_type">report</field>
+            <!-- custom pager format -->
+            <field name="paperformat_id" ref="paperformat_student_report"/>
         </record>
 
         <!-- excel version -->

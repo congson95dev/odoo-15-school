@@ -1,1 +1,1 @@
-from . import students
+from . import students, website_event_inherit

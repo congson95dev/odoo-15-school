@@ -23,7 +23,13 @@
             <field name="arch" type="xml">
                 <!-- default_order is bigger than _order in model -->
                 <!-- multi_edit is to allow multi edit in tree view -->
-                <tree default_order="sequence asc" multi_edit="1">
+                <!-- decoration- is to change the color of the words in the column -->
+                <tree default_order="sequence asc" multi_edit="1"
+                      decoration-bf="state == 'draft'"
+                      decoration-danger="state == 'confirm'"
+                      decoration-success="state == 'done'"
+                      decoration-info="state == 'cancel'"
+                >
                     <field name="sequence" readonly="1"/>
                     <field name="student_id"/>
                     <field name="teacher_id"/>
@@ -34,6 +40,23 @@
                     <field name="date"/>
                     <field name="state"/>
                 </tree>
+            </field>
+        </record>
+
+        <record id="school_calendar_calendar" model="ir.ui.view">
+            <field name="name">school.calendar.calendar</field>
+            <field name="model">school.calendar</field>
+            <field name="arch" type="xml">
+                <!-- create="0" to disable the create function -->
+                <!-- mode="month" to set default mode -->
+                <!-- date_start="date" to use "date" field in calendar model as default filter for this calendar view -->
+                <calendar string="Calendar" create="0" mode="month" date_start="date">
+                    <field name="sequence"/>
+                    <field name="student_id"/>
+                    <field name="teacher_id"/>
+                    <field name="state"/>
+                    <field name="calendar_jobs_ids"/>
+                </calendar>
             </field>
         </record>
 
@@ -72,7 +95,9 @@
                             <field name="teacher_id"/>
                             <field name="student_age"/>
                             <field name="student_gender" readonly="1" force_save="1"/>
-                            <field name="date"/>
+                            <!-- daysOfWeekDisabled to disable day of date field -->
+                            <!-- 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday -->
+                            <field name="date" options='{"datepicker":{"daysOfWeekDisabled": [0,5,6]}}'/>
                         </group>
                         <!-- notebook section -->
                         <notebook>
@@ -119,7 +144,7 @@
         <record model="ir.actions.act_window" id="action_school_calendar">
             <field name="name">Calendar</field>
             <field name="res_model">school.calendar</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create new appointment
                 </p>

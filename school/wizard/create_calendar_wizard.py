@@ -33,6 +33,8 @@ class CreateCalendarWizard(models.TransientModel):
             'res_model': 'school.calendar',
             'type': 'ir.actions.act_window',
             # 'target': 'new' # Add this if you need the form loaded is a popup
+            # 'form_view_initial_mode': 'edit' is to show edit form mode after create calendar by popup, normally, it show view form mode.
+            'context': {'form_view_initial_mode': 'edit'},
             'res_id': calendar_id
         }
 

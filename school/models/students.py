@@ -31,7 +31,8 @@ class Students(models.Model):
     email = fields.Char(string='Email', required=False, tracking=True)
     photo = fields.Binary(string='Photo', tracking=True)
     # default=_get_default_age is set default by a function, and that function call to system configuration param which we set earlier
-    student_age = fields.Integer(string='Age', tracking=True, copy=False, default=_get_default_age)
+    # group_operator=False is to ignore the calculate total of age when we group by
+    student_age = fields.Integer(string='Age', tracking=True, copy=False, default=_get_default_age, group_operator=False)
     student_dob = fields.Date(string="Date of Birth", tracking=True)
     student_gender = fields.Selection([('m', 'Male'), ('f', 'Female'), ('o', 'Other')], string='Gender', tracking=True)
     student_blood_group = fields.Selection(
