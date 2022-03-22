@@ -2,6 +2,7 @@ from odoo import api, models, fields, _
 from odoo.exceptions import ValidationError
 from datetime import datetime
 import pytz
+import json
 
 class Students(models.Model):
     _name = "school.students"
@@ -143,6 +144,24 @@ class Students(models.Model):
         # user_tz = pytz.timezone(self.env.context.get('tz') or self.env.user.tz)
         # converted_date = pytz.utc.localize(original_date).astimezone(user_tz)
         # print('converted date: ' + converted_date)
+
+        # HANDLE RECORD SETS WITH MAPPED, SORTED AND FILTERED FUNCTION
+        # get original partners
+        partners = self.env['res.partner'].sudo().search([])
+
+        # mapped
+        # get name column only in partners
+        mapped_partners = partners.mapped('name')
+
+        # sorted
+        # sort by id, but in desc
+        sorted_partners = partners.sorted('id', reverse=True)
+
+        # filtered
+        # get partner which is is_company = false
+        filtered_partners = partners.filtered(lambda o: not o.is_company)
+
+        print('Done!')
 
     def test_cron_function(self):
         print('successfully run cron function')

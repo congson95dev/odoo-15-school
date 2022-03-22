@@ -1,0 +1,1202 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-21 10:59+0000\n"
+"PO-Revision-Date: 2022-03-21 10:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school
+#: code:addons/school/models/students.py:0
+#: code:addons/school/models/teachers.py:0
+#, python-format
+msgid "%s (copy)"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.report,print_report_name:school.action_report_calendar
+#: model:ir.actions.report,print_report_name:school.action_report_calendar_xlsx
+msgid "'Calendar - [%s]' % (object.sequence).replace('/', '')"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.report,print_report_name:school.action_report_student
+#: model:ir.actions.report,print_report_name:school.action_report_student_xlsx
+msgid "'Student - [%s]' % (object.sequence).replace('/', '')"
+msgstr ""
+
+#. module: school
+#: model:mail.template,body_html:school.email_template_calendar_info
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Dear, <t t-out=\"object.student_id.name or 'n/a'\"/>\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                        Here is your calendar information:\n"
+"                        <br/>\n"
+"                        Date: <t t-out=\"object.date or 'n/a'\"/>\n"
+"                        <br/>\n"
+"                        State: <t t-out=\"object.state or 'n/a'\"/>\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                        Do not hesitate to contact us if you have any questions.\n"
+"                        <br/>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_form
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('student_calendar_count', '&lt;', 2)]}\"> Calendars</span>\n"
+"                                    <span class=\"o_stat_text\" attrs=\"{'invisible': [('student_calendar_count', '&gt;', 1)]}\"> Calendar</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_form
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('teacher_calendar_count', '&lt;', 2)]}\"> Calendars</span>\n"
+"                                    <span class=\"o_stat_text\" attrs=\"{'invisible': [('teacher_calendar_count', '&gt;', 1)]}\"> Calendar</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid ""
+"<span>\n"
+"                                                            <strong>Age:</strong>\n"
+"                                                        </span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid ""
+"<span>\n"
+"                                                            <strong>Barcode:</strong>\n"
+"                                                        </span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid ""
+"<span>\n"
+"                                                            <strong>Sequence:</strong>\n"
+"                                                        </span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid "<span>:</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid "<span>Calendar Details</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid "<span>Date</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_list
+msgid "<span>Email</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid "<span>Jobs Count</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_list
+msgid "<span>Name</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+#: model_terms:ir.ui.view,arch_db:school.report_student
+#: model_terms:ir.ui.view,arch_db:school.school_students_list
+msgid "<span>Sequence</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid "<span>State</span>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_saleorder_document_inherit
+msgid ""
+"<strong>Invoicing and Shipping Address (This is replaced text by module "
+"School):</strong>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_saleorder_document_inherit
+msgid "<strong>This text has been replaced by module School</strong>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+#: model_terms:ir.ui.view,arch_db:school.report_student
+msgid "<strong>Total Calendar</strong>"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_blood_group__a+
+#: model:ir.model.fields.selection,name:school.selection__school_teachers__teacher_blood_group__a+
+msgid "A+ve"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_blood_group__a-
+#: model:ir.model.fields.selection,name:school.selection__school_teachers__teacher_blood_group__a-
+msgid "A-ve"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_blood_group__ab+
+#: model:ir.model.fields.selection,name:school.selection__school_teachers__teacher_blood_group__ab+
+msgid "AB+ve"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_blood_group__ab-
+#: model:ir.model.fields.selection,name:school.selection__school_teachers__teacher_blood_group__ab-
+msgid "AB-ve"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_needaction
+#: model:ir.model.fields,field_description:school.field_school_students__message_needaction
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__active
+#: model:ir.model.fields,field_description:school.field_school_teachers__active
+msgid "Active"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_ids
+#: model:ir.model.fields,field_description:school.field_school_students__activity_ids
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_exception_decoration
+#: model:ir.model.fields,field_description:school.field_school_students__activity_exception_decoration
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_state
+#: model:ir.model.fields,field_description:school.field_school_students__activity_state
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_type_icon
+#: model:ir.model.fields,field_description:school.field_school_students__activity_type_icon
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_res_config_settings__school_student_default_age
+#: model:ir.model.fields,field_description:school.field_school_calendar__student_age
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__student_age
+#: model:ir.model.fields,field_description:school.field_school_students__student_age
+#: model:ir.model.fields,field_description:school.field_school_teachers__teacher_age
+msgid "Age"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+msgid "Age Less Than 18"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Age Less Than 40"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+msgid "Age More Than 18"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Age More Than 40"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_kanban
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_kanban
+msgid "Age:"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_form
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_form
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Archived"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Are you sure to clear all the jobs?"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_attachment_count
+#: model:ir.model.fields,field_description:school.field_school_students__message_attachment_count
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_tree
+msgid "Average of Ages"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_blood_group__b+
+#: model:ir.model.fields.selection,name:school.selection__school_teachers__teacher_blood_group__b+
+msgid "B+ve"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_blood_group__b-
+#: model:ir.model.fields.selection,name:school.selection__school_teachers__teacher_blood_group__b-
+msgid "B-ve"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__student_blood_group
+#: model:ir.model.fields,field_description:school.field_school_teachers__teacher_blood_group
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Blood Group"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_calendar
+#: model:ir.model,name:school.model_school_calendar
+#: model:ir.ui.menu,name:school.menu_school_calendar
+#: model:ir.ui.menu,name:school.school_calendar
+#: model:ir.ui.menu,name:school.school_sale_calendar
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_calendar
+msgid "Calendar"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__student_calendar_count
+#: model:ir.model.fields,field_description:school.field_school_teachers__teacher_calendar_count
+msgid "Calendar Count"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_graph
+msgid "Calendar Graph"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__calendar_id
+msgid "Calendar Id"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_calendar_jobs
+msgid "Calendar Jobs"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_pivot
+msgid "Calendar Pivot"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.report,name:school.action_report_calendar
+msgid "Calendar Report"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.report,name:school.action_report_calendar_xlsx
+msgid "Calendar Report XLSX"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Calendar View/Edit"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__calendar_ids
+#: model:ir.model.fields,field_description:school.field_school_teachers__calendar_ids
+#: model_terms:ir.ui.view,arch_db:school.school_students_form
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_form
+msgid "Calendars"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+msgid "Calendars List"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_calendar__state__cancel
+#: model_terms:ir.ui.view,arch_db:school.view_school_create_calendar_wizard
+#: model_terms:ir.ui.view,arch_db:school.view_school_search_and_print_calendar_wizard
+msgid "Cancel"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.server,name:school.action_confirm_calendar
+msgid "Change to Confirm"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Clear All Jobs"
+msgstr "Xóa toàn bộ công việc"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_res_partner__company_type
+#: model:ir.model.fields,field_description:school.field_res_users__company_type
+msgid "Company Type"
+msgstr "Loại công ty"
+
+#. module: school
+#: model:ir.model,name:school.model_res_config_settings
+msgid "Config Settings"
+msgstr "Thiết lập cấu hình"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_configuration
+msgid "Configuration"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_calendar__state__confirm
+msgid "Confirm"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_res_partner
+msgid "Contact"
+msgstr "Liên hệ"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_create_calendar_wizard
+msgid "Create"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.server,name:school.action_create_calendar
+#: model:ir.ui.menu,name:school.school_create_calendar
+#: model_terms:ir.ui.view,arch_db:school.school_students_form
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_form
+#: model_terms:ir.ui.view,arch_db:school.view_school_create_calendar_wizard
+msgid "Create Calendar"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_create_calendar_wizard
+msgid "Create Calendar Wizard"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.actions.act_window,help:school.action_school_calendar
+msgid "Create new appointment"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.actions.act_window,help:school.action_school_students
+#: model_terms:ir.actions.act_window,help:school.action_school_students_gender_female
+#: model_terms:ir.actions.act_window,help:school.action_school_students_gender_male
+#: model_terms:ir.actions.act_window,help:school.action_school_students_kids
+msgid "Create new student"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.actions.act_window,help:school.action_school_teachers
+msgid "Create new teacher"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__create_uid
+#: model:ir.model.fields,field_description:school.field_report_school_report_student__create_uid
+#: model:ir.model.fields,field_description:school.field_school_calendar__create_uid
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__create_uid
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__create_uid
+#: model:ir.model.fields,field_description:school.field_school_students__create_uid
+#: model:ir.model.fields,field_description:school.field_school_teachers__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__create_date
+#: model:ir.model.fields,field_description:school.field_report_school_report_student__create_date
+#: model:ir.model.fields,field_description:school.field_school_calendar__create_date
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__create_date
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__create_date
+#: model:ir.model.fields,field_description:school.field_school_students__create_date
+#: model:ir.model.fields,field_description:school.field_school_teachers__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_sale_order__custom_field
+msgid "Custom Field"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__date
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__date
+msgid "Date"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__date_from
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+msgid "Date From"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__date_to
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+msgid "Date To"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__student_dob
+#: model:ir.model.fields,field_description:school.field_school_teachers__teacher_dob
+msgid "Date of Birth"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.res_config_settings_view_form
+msgid "Default Age"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_res_config_settings__product_default
+#: model_terms:ir.ui.view,arch_db:school.res_config_settings_view_form
+msgid "Default Product"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_res_config_settings__product_default_many2many
+#: model_terms:ir.ui.view,arch_db:school.res_config_settings_view_form
+msgid "Default Product Many2many"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__display_name
+#: model:ir.model.fields,field_description:school.field_report_school_report_student__display_name
+#: model:ir.model.fields,field_description:school.field_school_calendar__display_name
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__display_name
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__display_name
+#: model:ir.model.fields,field_description:school.field_school_students__display_name
+#: model:ir.model.fields,field_description:school.field_school_teachers__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_calendar__state__done
+msgid "Done"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_calendar__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__email
+msgid "Email"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_res_config_settings__school_student_enable_configuration
+#: model_terms:ir.ui.view,arch_db:school.res_config_settings_view_form
+msgid "Enable Configuration"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_calendar__student_gender__f
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_gender__f
+#: model:ir.ui.menu,name:school.school_students_gender_female
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Female"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_students_gender_female
+msgid "Female Students"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_follower_ids
+#: model:ir.model.fields,field_description:school.field_school_students__message_follower_ids
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_partner_ids
+#: model:ir.model.fields,field_description:school.field_school_students__message_partner_ids
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__activity_type_icon
+#: model:ir.model.fields,help:school.field_school_students__activity_type_icon
+#: model:ir.model.fields,help:school.field_school_teachers__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+msgid "Form Information"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__student_gender
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__student_gender
+#: model:ir.model.fields,field_description:school.field_school_students__student_gender
+#: model:ir.model.fields,field_description:school.field_school_teachers__teacher_gender
+#: model:ir.ui.menu,name:school.school_students_genders
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Gender"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_kanban
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_kanban
+msgid "Gender:"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Group By"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__has_message
+#: model:ir.model.fields,field_description:school.field_school_students__has_message
+#: model:ir.model.fields,field_description:school.field_school_teachers__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__id
+#: model:ir.model.fields,field_description:school.field_report_school_report_student__id
+#: model:ir.model.fields,field_description:school.field_school_calendar__id
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__id
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__id
+#: model:ir.model.fields,field_description:school.field_school_students__id
+#: model:ir.model.fields,field_description:school.field_school_teachers__id
+msgid "ID"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_exception_icon
+#: model:ir.model.fields,field_description:school.field_school_students__activity_exception_icon
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__activity_exception_icon
+#: model:ir.model.fields,help:school.field_school_students__activity_exception_icon
+#: model:ir.model.fields,help:school.field_school_teachers__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__message_needaction
+#: model:ir.model.fields,help:school.field_school_calendar__message_unread
+#: model:ir.model.fields,help:school.field_school_students__message_needaction
+#: model:ir.model.fields,help:school.field_school_students__message_unread
+#: model:ir.model.fields,help:school.field_school_teachers__message_needaction
+#: model:ir.model.fields,help:school.field_school_teachers__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__message_has_error
+#: model:ir.model.fields,help:school.field_school_calendar__message_has_sms_error
+#: model:ir.model.fields,help:school.field_school_students__message_has_error
+#: model:ir.model.fields,help:school.field_school_students__message_has_sms_error
+#: model:ir.model.fields,help:school.field_school_teachers__message_has_error
+#: model:ir.model.fields,help:school.field_school_teachers__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_is_follower
+#: model:ir.model.fields,field_description:school.field_school_students__message_is_follower
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__calendar_jobs_ids
+msgid "Jobs"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_students_kids
+#: model:ir.ui.menu,name:school.school_students_kids
+msgid "Kids"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs____last_update
+#: model:ir.model.fields,field_description:school.field_report_school_report_student____last_update
+#: model:ir.model.fields,field_description:school.field_school_calendar____last_update
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard____last_update
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard____last_update
+#: model:ir.model.fields,field_description:school.field_school_students____last_update
+#: model:ir.model.fields,field_description:school.field_school_teachers____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__last_name
+msgid "Last Name"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__write_uid
+#: model:ir.model.fields,field_description:school.field_report_school_report_student__write_uid
+#: model:ir.model.fields,field_description:school.field_school_calendar__write_uid
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__write_uid
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__write_uid
+#: model:ir.model.fields,field_description:school.field_school_students__write_uid
+#: model:ir.model.fields,field_description:school.field_school_teachers__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__write_date
+#: model:ir.model.fields,field_description:school.field_report_school_report_student__write_date
+#: model:ir.model.fields,field_description:school.field_school_calendar__write_date
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__write_date
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__write_date
+#: model:ir.model.fields,field_description:school.field_school_students__write_date
+#: model:ir.model.fields,field_description:school.field_school_teachers__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_main_attachment_id
+#: model:ir.model.fields,field_description:school.field_school_students__message_main_attachment_id
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_calendar__student_gender__m
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_gender__m
+#: model:ir.ui.menu,name:school.school_students_gender_male
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Male"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_students_gender_male
+msgid "Male Students"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_has_error
+#: model:ir.model.fields,field_description:school.field_school_students__message_has_error
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_ids
+#: model:ir.model.fields,field_description:school.field_school_students__message_ids
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__middle_name
+msgid "Middle Name"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__my_activity_date_deadline
+#: model:ir.model.fields,field_description:school.field_school_students__my_activity_date_deadline
+#: model:ir.model.fields,field_description:school.field_school_teachers__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__name
+#: model:ir.model.fields,field_description:school.field_school_students__name
+#: model:ir.model.fields,field_description:school.field_school_teachers__name
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+msgid "Name"
+msgstr ""
+
+#. module: school
+#: code:addons/school/models/students.py:0
+#, python-format
+msgid "Name %s already exists"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_kanban
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_kanban
+msgid "Name:"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__nationality
+#: model:ir.model.fields,field_description:school.field_school_teachers__nationality
+msgid "Nationality"
+msgstr ""
+
+#. module: school
+#: code:addons/school/models/calendar.py:0
+#: code:addons/school/models/calendar.py:0
+#: code:addons/school/models/calendar.py:0
+#: code:addons/school/models/calendar.py:0
+#: code:addons/school/models/students.py:0
+#: code:addons/school/models/students.py:0
+#: code:addons/school/models/students.py:0
+#: code:addons/school/models/students.py:0
+#: code:addons/school/models/teachers.py:0
+#: code:addons/school/models/teachers.py:0
+#: code:addons/school/models/teachers.py:0
+#: code:addons/school/models/teachers.py:0
+#: code:addons/school/wizard/create_calendar_wizard.py:0
+#: code:addons/school/wizard/create_calendar_wizard.py:0
+#: code:addons/school/wizard/create_calendar_wizard.py:0
+#: code:addons/school/wizard/create_calendar_wizard.py:0
+#, python-format
+msgid "New"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_calendar_event_id
+#: model:ir.model.fields,field_description:school.field_school_students__activity_calendar_event_id
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_date_deadline
+#: model:ir.model.fields,field_description:school.field_school_students__activity_date_deadline
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_summary
+#: model:ir.model.fields,field_description:school.field_school_students__activity_summary
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_type_id
+#: model:ir.model.fields,field_description:school.field_school_students__activity_type_id
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_needaction_counter
+#: model:ir.model.fields,field_description:school.field_school_students__message_needaction_counter
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_has_error_counter
+#: model:ir.model.fields,field_description:school.field_school_students__message_has_error_counter
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__message_needaction_counter
+#: model:ir.model.fields,help:school.field_school_students__message_needaction_counter
+#: model:ir.model.fields,help:school.field_school_teachers__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__message_has_error_counter
+#: model:ir.model.fields,help:school.field_school_students__message_has_error_counter
+#: model:ir.model.fields,help:school.field_school_teachers__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__message_unread_counter
+#: model:ir.model.fields,help:school.field_school_students__message_unread_counter
+#: model:ir.model.fields,help:school.field_school_teachers__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_blood_group__o+
+#: model:ir.model.fields.selection,name:school.selection__school_teachers__teacher_blood_group__o+
+msgid "O+ve"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_blood_group__o-
+#: model:ir.model.fields.selection,name:school.selection__school_teachers__teacher_blood_group__o-
+msgid "O-ve"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_calendar__student_gender__o
+#: model:ir.model.fields.selection,name:school.selection__school_students__student_gender__o
+msgid "Other"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Page 1"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Page 2"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_students__photo
+#: model:ir.model.fields,field_description:school.field_school_teachers__photo
+msgid "Photo"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_search_and_print_calendar_wizard
+msgid "Print Calendars"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_search_and_print_calendar_wizard
+msgid "Print Calendars XLSX"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__priority
+msgid "Priority"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_form
+msgid "Redirect To Github"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__activity_user_id
+#: model:ir.model.fields,field_description:school.field_school_students__activity_user_id
+#: model:ir.model.fields,field_description:school.field_school_teachers__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.server,name:school.action_school_run_function_directly
+#: model:ir.ui.menu,name:school.school_students_run_function_directly
+msgid "Run Function Directly"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_has_sms_error
+#: model:ir.model.fields,field_description:school.field_school_students__message_has_sms_error
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_sale_order
+msgid "Sales Order"
+msgstr "Đơn bán hàng"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_school
+#: model_terms:ir.ui.view,arch_db:school.res_config_settings_view_form
+msgid "School"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_create_calendar
+msgid "School Create Calendar"
+msgstr ""
+
+#. module: school
+#: model:ir.module.category,name:school.school_management
+msgid "School Management"
+msgstr ""
+
+#. module: school
+#: model:ir.module.category,description:school.school_management
+msgid "School Management Category"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.school_manager
+msgid "School Manager"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_search_and_print_calendar
+msgid "School Search and Print Calendar"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_settings
+#: model_terms:ir.ui.view,arch_db:school.res_config_settings_view_form
+msgid "School Settings"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.school_teacher
+msgid "School Teacher"
+msgstr ""
+
+#. module: school
+#: model:mail.template,name:school.email_template_calendar_info
+msgid "School: Send Calendar Information Email"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.server,name:school.ir_cron_test_cron_function_ir_actions_server
+#: model:ir.cron,cron_name:school.ir_cron_test_cron_function
+#: model:ir.cron,name:school.ir_cron_test_cron_function
+msgid "School: Test Cron Function"
+msgstr ""
+
+#. module: school
+#: model:ir.ui.menu,name:school.school_search_and_print_calendar
+#: model_terms:ir.ui.view,arch_db:school.view_school_search_and_print_calendar_wizard
+msgid "Search and Print Calendar"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_search_and_print_calendar_wizard
+msgid "Search and Print Calendar Wizard"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Send Calendar Information Email"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_calendar_jobs__sequence
+#: model:ir.model.fields,field_description:school.field_school_calendar__sequence
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__sequence
+#: model:ir.model.fields,field_description:school.field_school_students__sequence
+#: model:ir.model.fields,field_description:school.field_school_teachers__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Set To Cancel"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Set To Confirm"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Set To Done"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_calendar_form
+msgid "Set To Draft"
+msgstr ""
+
+#. module: school
+#: model:ir.ui.menu,name:school.school_settings
+msgid "Settings"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.res_config_settings_view_form
+msgid "Settings for School module"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__state
+msgid "Status"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__activity_state
+#: model:ir.model.fields,help:school.field_school_students__activity_state
+#: model:ir.model.fields,help:school.field_school_teachers__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__student_id
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__student_id
+#: model:ir.model.fields,field_description:school.field_school_search_and_print_calendar_wizard__student_id
+#: model:ir.model.fields.selection,name:school.selection__res_partner__company_type__student
+#: model_terms:ir.ui.view,arch_db:school.report_calendar
+msgid "Student"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_report_school_report_student
+msgid "Student Report"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_form
+msgid "Student View/Edit"
+msgstr ""
+
+#. module: school
+#: model:mail.template,subject:school.email_template_calendar_info
+msgid ""
+"Student [{{ object.student_id.sequence or 'n/a' }}] {{ object.student_id.name or 'n/a' }} Calendar Information\n"
+"            "
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_students
+#: model:ir.actions.report,name:school.action_report_student
+#: model:ir.model,name:school.model_school_students
+#: model:ir.ui.menu,name:school.menu_students
+#: model:ir.ui.menu,name:school.school_students
+#: model_terms:ir.ui.view,arch_db:school.school_students_search
+msgid "Students"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_students_list
+msgid "Students List:"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.report,name:school.action_report_student_xlsx
+msgid "Students XLSX"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_teachers
+#: model:ir.model,name:school.model_school_teachers
+#: model:ir.model.fields,field_description:school.field_school_calendar__teacher_id
+#: model:ir.model.fields,field_description:school.field_school_create_calendar_wizard__teacher_id
+#: model:ir.model.fields,field_description:school.field_school_teachers__teacher_id
+#: model:ir.ui.menu,name:school.menu_teachers
+#: model:ir.ui.menu,name:school.school_teachers
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_search
+msgid "Teachers"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teachers_form
+msgid "Teachers View/Edit"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_search_and_print_calendar_wizard
+msgid "Test Button"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__activity_exception_decoration
+#: model:ir.model.fields,help:school.field_school_students__activity_exception_decoration
+#: model:ir.model.fields,help:school.field_school_teachers__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_unread
+#: model:ir.model.fields,field_description:school.field_school_students__message_unread
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__message_unread_counter
+#: model:ir.model.fields,field_description:school.field_school_students__message_unread_counter
+#: model:ir.model.fields,field_description:school.field_school_teachers__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_create_calendar_wizard
+msgid "View Calendars"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_calendar__website_message_ids
+#: model:ir.model.fields,field_description:school.field_school_students__website_message_ids
+#: model:ir.model.fields,field_description:school.field_school_teachers__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_calendar__website_message_ids
+#: model:ir.model.fields,help:school.field_school_students__website_message_ids
+#: model:ir.model.fields,help:school.field_school_teachers__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: school
+#: code:addons/school/models/calendar.py:0
+#, python-format
+msgid "You cannot delete this record because its in Done state."
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_report_school_report_calendar_xlsx
+msgid "report.school.report_calendar_xlsx"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_report_school_report_student_xlsx
+msgid "report.school.report_student_xlsx"
+msgstr ""

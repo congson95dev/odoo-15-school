@@ -6,23 +6,26 @@ class SchoolSettings(models.TransientModel):
 
     school_student_enable_configuration = fields.Boolean(string="Enable Configuration")
     school_student_default_age = fields.Char(string='Age')
-    # Trying to make Many2many field in settings, but doesn't work
-    # Link and issue: https://www.youtube.com/watch?v=-n7Ttx1Czdw&list=PLqRRLx0cl0hoJhjFWkFYowveq2Zn55dhM&index=96
-    # product_default = fields.Many2many('product.product', string='Default Product')
+    product_default = fields.Many2one('product.product', string='Default Product')
+    # many2many will give you multiselect options, when many2one only give you select option
+    # to use many2many, we must declare the middle table to connect 2 tables together.
+    # in this example, i create a new table named 'config_product_rel'
+    # with 2 column connect 2 table that is 'id' for the 'ir_config_parameter' table
+    # and 'product_id' for 'product_product' table
+    product_default_many2many = fields.Many2many('product.product', 'config_product_rel', 'id', 'product_id',
+                  'Default Product Many2many')
 
     @api.model
     def get_values(self):
         res = super(SchoolSettings, self).get_values()
         res['school_student_enable_configuration'] = self.env['ir.config_parameter'].sudo().get_param('school.school_student_enable_configuration')
         res['school_student_default_age'] = self.env['ir.config_parameter'].sudo().get_param('school.school_student_default_age')
+        res['product_default'] = int(self.env['ir.config_parameter'].sudo().get_param('school.product_default'))
 
-        # Trying to make Many2many field in settings, but doesn't work
-        # Link and issue: https://www.youtube.com/watch?v=-n7Ttx1Czdw&list=PLqRRLx0cl0hoJhjFWkFYowveq2Zn55dhM&index=96
-        # if self.env['ir.config_parameter'].sudo().get_param('school.school_default_teacher'):
-        #     product_default = self.env['ir.config_parameter'].sudo().get_param('school.product_default')
-        #     res.update(
-        #         product_default=[(6, 0, literal_eval(product_default))]
-        #     )
+        # set values for many2many field
+        if self.env['ir.config_parameter'].sudo().get_param('school.product_default_many2many'):
+            product_default_many2many = self.env['ir.config_parameter'].sudo().get_param('school.product_default_many2many')
+            res['product_default_many2many'] = [(6, 0, literal_eval(product_default_many2many))]
 
         return res
 
@@ -31,6 +34,7 @@ class SchoolSettings(models.TransientModel):
         super(SchoolSettings, self).set_values()
         self.env['ir.config_parameter'].set_param('school.school_student_enable_configuration', self.school_student_enable_configuration)
         self.env['ir.config_parameter'].set_param('school.school_student_default_age', self.school_student_default_age)
-        # Trying to make Many2many field in settings, but doesn't work
-        # Link and issue: https://www.youtube.com/watch?v=-n7Ttx1Czdw&list=PLqRRLx0cl0hoJhjFWkFYowveq2Zn55dhM&index=96
-        # self.env['ir.config_parameter'].set_param('school.product_default', self.product_default.ids)
+        # get value for many2one field
+        self.env['ir.config_parameter'].set_param('school.product_default', self.product_default.id)
+        # get values for many2many field
+        self.env['ir.config_parameter'].set_param('school.product_default_many2many', self.product_default_many2many.ids)

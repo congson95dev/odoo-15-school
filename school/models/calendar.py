@@ -25,10 +25,12 @@ class Calendar(models.Model):
         ('done', 'Done'),
         ('cancel', 'Cancel')
     ], string='Status', default='draft', tracking=True)
+    product_id = fields.Many2one('product.template', string='Product', tracking=True)
     # - one2many field will show a field that we can add multiple value
     # - syntax was somename_ids, there's always have _ids at the end
     # - when we create a one2many field, we also need to create a many2one field in another model and connect it to eachother
     calendar_jobs_ids = fields.One2many('calendar.jobs', 'calendar_id', string="Jobs")
+    school_products_ids = fields.One2many('school.products', 'calendar_id', string="Products")
 
     # override function create
     @api.model
@@ -59,11 +61,34 @@ class Calendar(models.Model):
         else:
             self.student_gender = ''
 
+    @api.onchange('product_id')
+    def onchange_product_id(self):
+        # change one2many field based many2one field change
+        # change school_products_ids when choose product_id
+        for rec in self:
+            # [(5, 0, 0)] is to remove all existing record and only save the new record only
+            lines = [(5, 0, 0)]
+            vals = {
+                'name' : rec.product_id.name,
+                'qty': 1
+            }
+            line = (0, 0, vals)
+            lines.append(line)
+            rec.school_products_ids = lines
+
     def action_draft(self):
         self.state = 'draft'
 
     def action_confirm(self):
         self.state = 'confirm'
+        # show rainbow_man effect after set status to "confirm"
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'message': 'Set to confirm successfully',
+                'type': 'rainbow_man',
+            }
+        }
 
     def action_done(self):
         self.state = 'done'
@@ -90,8 +115,23 @@ class CalendarJobs(models.Model):
     _name = "calendar.jobs"
     _description = "Calendar Jobs"
 
+    # sequence is created so we can use it for widget="handle" in tree view
+    sequence = fields.Char(string='Sequence')
     name = fields.Char(string='Name', required=True)
     priority = fields.Char(string='Priority')
     # this field is created for connect to one2many field "calendar_jobs_ids" in model above
+    # hide this field in form and tree view if you don't wanna see it
+    calendar_id = fields.Many2one('school.calendar', string='Calendar Id')
+
+# this class is created for serve one2many field "school_products" in model above
+class SchoolProducts(models.Model):
+    _name = "school.products"
+    _description = "School Products"
+
+    # sequence is created so we can use it for widget="handle" in tree view
+    sequence = fields.Char(string='Sequence')
+    name = fields.Char(string='Name')
+    qty = fields.Char(string='Qty')
+    # this field is created for connect to one2many field "school_products_ids" in model above
     # hide this field in form and tree view if you don't wanna see it
     calendar_id = fields.Many2one('school.calendar', string='Calendar Id')

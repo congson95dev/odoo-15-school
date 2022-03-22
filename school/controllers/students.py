@@ -16,3 +16,13 @@ class StudentsController(http.Controller):
         return request.render("school.school_students_list", {
             'students': students
         })
+
+    # banner route, this is a banner html called to kanban view or tree view
+    @http.route('/school/students_banner_route', auth='user', type='json')
+    def students_banner_route(self):
+        return {
+            'html': """
+                <div><center><h1><font color="red">This is a test banner route</font></h1></center></div>
+                <div><center><h3><a target="_blank" href="https://github.com/saxsax1995/odoo-15-school">Github Link</a></h3></center></div>
+            """
+        }

@@ -49,7 +49,7 @@
             <field name="arch" type="xml">
                 <!-- create="0" to disable the create function -->
                 <!-- mode="month" to set default mode -->
-                <!-- date_start="date" to use "date" field in calendar model as default filter for this calendar view -->
+                <!-- date_start="date" to use "date" field in calendar model as default filter for this calendar view, not sure about this -->
                 <calendar string="Calendar" create="0" mode="month" date_start="date">
                     <field name="sequence"/>
                     <field name="student_id"/>
@@ -58,6 +58,30 @@
                     <field name="calendar_jobs_ids"/>
                 </calendar>
             </field>
+        </record>
+
+        <record id="school_calendar_graph" model="ir.ui.view">
+            <field name="name">school.calendar.graph</field>
+            <field name="model">school.calendar</field>
+            <field name="arch" type="xml">
+                <graph string="Calendar Graph">
+                    <field name="sequence"/>
+                    <field name="student_id"/>
+                    <field name="teacher_id"/>
+                    <field name="state"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="school_calendar_pivot" model="ir.ui.view">
+             <field name="name">school.calendar.pivot</field>
+             <field name="model">school.calendar</field>
+             <field name="arch" type="xml">
+                 <pivot string="Calendar Pivot">
+                     <field name="teacher_id" type="col"/>
+                     <field name="student_id" type="row"/>
+                 </pivot>
+             </field>
         </record>
 
         <record id="school_calendar_form" model="ir.ui.view">
@@ -98,6 +122,7 @@
                             <!-- daysOfWeekDisabled to disable day of date field -->
                             <!-- 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday -->
                             <field name="date" options='{"datepicker":{"daysOfWeekDisabled": [0,5,6]}}'/>
+                            <field name="product_id"/>
                         </group>
                         <!-- notebook section -->
                         <notebook>
@@ -108,6 +133,9 @@
                                         <!-- editable="top" is to create a new line at top -->
                                         <!-- editable="bottom" is to create a new line at bottom -->
                                         <tree editable="bottom">
+                                            <!-- widget="handle" is to show the drag and drop records button in tree view -->
+                                            <!-- for widget="handle", it must be sequence column, or else it won't work -->
+                                            <field name="sequence" widget="handle"></field>
                                             <field name="name"></field>
                                             <field name="priority"></field>
                                         </tree>
@@ -127,6 +155,26 @@
                                     <field name="student_gender" readonly="1"></field>
                                 </group>
                             </page>
+                            <page string="Page 3" name="page_3">
+                                <group>
+                                    <field name="school_products_ids" readonly="1" force_save="1">
+                                        <tree>
+                                            <!-- widget="handle" is to show the drag and drop records button in tree view -->
+                                            <!-- for widget="handle", it must be sequence column, or else it won't work -->
+                                            <field name="sequence" widget="handle"></field>
+                                            <field name="name"></field>
+                                            <field name="qty"></field>
+                                        </tree>
+                                        <form>
+                                            <!-- only show 2 fields "name" and "qty", ignore field "calendar_id" so it will hide that field -->
+                                            <group>
+                                                <field name="name"></field>
+                                                <field name="qty"></field>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
                         </notebook>
                     </sheet>
                     <!-- chatbox section -->
@@ -144,7 +192,7 @@
         <record model="ir.actions.act_window" id="action_school_calendar">
             <field name="name">Calendar</field>
             <field name="res_model">school.calendar</field>
-            <field name="view_mode">tree,form,kanban,calendar</field>
+            <field name="view_mode">tree,form,kanban,calendar,graph,pivot</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create new appointment
                 </p>
