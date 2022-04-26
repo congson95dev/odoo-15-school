@@ -31,8 +31,12 @@
                       decoration-info="state == 'cancel'"
                 >
                     <field name="sequence" readonly="1"/>
-                    <field name="student_id"/>
-                    <field name="teacher_id"/>
+                    <!-- trying to use widget="many2onebutton" so in the list view, when we click on student_id, it will redirect us to student form view -->
+                    <!-- but it's not working -->
+                    <field name="student_id" widget="many2onebutton"/>
+                    <!-- trying to use widget="many2onebutton" so in the list view, when we click on teacher_id, it will redirect us to teacher form view -->
+                    <!-- but it's not working -->
+                    <field name="teacher_id" widget="many2onebutton"/>
                     <!-- use sum="Sum of Ages" to calculate sum and show at the bottom of column -->
                     <!-- use avg="Average of Ages" to calculate average and show at the bottom of column -->
                     <field name="student_age" avg="Average of Ages"/>
@@ -100,6 +104,7 @@
                         <button id="button_clear_all_jobs" name="clear_all_jobs" string="Clear All Jobs"
                                 confirm="Are you sure to clear all the jobs?"
                                 type="object" class="oe_highlight"/>
+                        <!-- show state as status bar -->
                         <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
                     </header>
                     <sheet>

@@ -23,7 +23,7 @@ class Teachers(models.Model):
     photo = fields.Binary(string='Photo', related='teacher_id.image_1920', tracking=True)
     teacher_age = fields.Integer(string='Age', tracking=True, copy=False)
     teacher_dob = fields.Date(string="Date of Birth", related='teacher_id.birthday', tracking=True)
-    teacher_gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')], string='Gender', related='teacher_id.gender', tracking=True)
+    teacher_gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')], string='Gender', related='teacher_id.gender', tracking=True, store=True)
     teacher_blood_group = fields.Selection(
         [('A+', 'A+ve'), ('B+', 'B+ve'), ('O+', 'O+ve'), ('AB+', 'AB+ve'),
          ('A-', 'A-ve'), ('B-', 'B-ve'), ('O-', 'O-ve'), ('AB-', 'AB-ve')],
