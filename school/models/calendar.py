@@ -13,6 +13,15 @@ class Calendar(models.Model):
     _rec_name="sequence"
     _order = "sequence desc"
 
+    # override default value of field
+    # this function MUST added before we define the field
+    @api.model
+    def default_get(self, fields):
+        res = super(Calendar, self).default_get(fields)
+        # set default value for field description
+        res['description'] = 'Test Description'
+        return res
+
     sequence = fields.Char(string='Sequence', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'), tracking=True)
     student_id = fields.Many2one('school.students', string='Student', required=True, tracking=True)
     teacher_id = fields.Many2one('school.teachers', string='Teachers', required=True, tracking=True)
@@ -31,6 +40,12 @@ class Calendar(models.Model):
     # - when we create a one2many field, we also need to create a many2one field in another model and connect it to eachother
     calendar_jobs_ids = fields.One2many('calendar.jobs', 'calendar_id', string="Jobs")
     school_products_ids = fields.One2many('school.products', 'calendar_id', string="Products")
+    description = fields.Html(string="Description")
+    hide_priority_column = fields.Boolean(string="Hide Priority Column In Page 1")
+    color_picker = fields.Integer(string="Color Picker")
+    color = fields.Integer(string="Color")
+    # text field is bigger than normal char field
+    text_field = fields.Text(string="Text Field")
 
     # override function create
     @api.model

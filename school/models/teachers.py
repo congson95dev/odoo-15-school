@@ -33,7 +33,7 @@ class Teachers(models.Model):
     calendar_ids = fields.One2many('school.calendar', 'teacher_id', string="Calendars")
     # show archive / unarchive in list
     active = fields.Boolean(string="Active", default=True)
-
+    teacher_calendar_many2many = fields.Many2many('school.calendar', string='Teacher Calendar Many2many')
 
     # compute function
     def _compute_teacher_calendar_count(self):

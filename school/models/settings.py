@@ -8,9 +8,9 @@ class SchoolSettings(models.TransientModel):
     school_student_default_age = fields.Char(string='Age')
     product_default = fields.Many2one('product.product', string='Default Product')
     # many2many will give you multiselect options, when many2one only give you select option
-    # to use many2many, we must declare the middle table to connect 2 tables together.
+    # to use many2many, we can declare the middle table to connect 2 tables together.
     # in this example, i create a new table named 'config_product_rel'
-    # with 2 column connect 2 table that is 'id' for the 'ir_config_parameter' table
+    # with 2 column connect 2 table that is 'id' for the 'ir_config_parameter' table (current table)
     # and 'product_id' for 'product_product' table
     product_default_many2many = fields.Many2many('product.product', 'config_product_rel', 'id', 'product_id',
                   'Default Product Many2many')

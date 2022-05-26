@@ -231,7 +231,9 @@
             </field>
         </record>
 
-        <menuitem id="menu_school" name="School"/>
+        <!-- set image for root menu item -->
+        <!-- web_icon="module_name,image_url" -->
+        <menuitem id="menu_school" name="School" web_icon="school,static/description/school.png"/>
         <menuitem id="menu_students" name="Students" parent="menu_school"/>
         <menuitem id="school_students" name="Students" parent="menu_students"
                   action="action_school_students"/>

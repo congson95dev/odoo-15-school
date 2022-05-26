@@ -15,6 +15,14 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
+        # data to import should be right below security
+        'data/data.xml',
+        # import by csv
+        # the name of the csv file is model name
+        # inside that file, first column must be id of the record (name it anything you like)
+        # after the first column, you can fill any column in that model
+        'data/school.students.csv',
+        # data to import should be right above the others
         'report/student_report.xml',
         'report/student_report_template.xml',
         'report/calendar_report.xml',
@@ -32,7 +40,6 @@
         'views/students_template.xml',
         'views/settings.xml',
         'data/sequence.xml',
-        'data/data.xml',
         'data/cron.xml',
         'data/mail_template_data.xml',
     ],

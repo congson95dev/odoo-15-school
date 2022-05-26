@@ -31,8 +31,10 @@
                 <tree multi_edit="1" expand="1">
                     <!-- optional="show" and optional="hide" to show/hide column by default -->
                     <field name="sequence" readonly="1" optional="show"/>
-                    <field name="name" optional="show"/>
-                    <field name="photo" optional="show"/>
+                    <!-- widget="many2one_avatar" is to show avatar of res.user -->
+                    <!-- widget="many2one_avatar_user" is to show avatar of res.user, and also, when you click on that avatar,
+                    it will open a chat message popup -->
+                    <field name="teacher_id" widget="many2one_avatar_user"/>
                     <field name="teacher_age" optional="show"/>
                     <field name="teacher_dob" optional="show"/>
                     <field name="teacher_gender" optional="show"/>
@@ -130,6 +132,12 @@
                             <field name="teacher_calendar_count"/>
                             <!-- show archive / unarchive in form -->
                             <field name="active" invisible="1"/>
+                            <!-- show color in many2many field -->
+                            <!-- color_picker is a field in the model which connected to this many2many field,
+                            such as this many2many field is connected to model school.calendar
+                            then, in model school.calendar must have column color_picker with widget="color_picker" or widget="color"
+                            to make it work -->
+                            <field name="teacher_calendar_many2many" widget="many2many_tags" options="{'color_field': 'color_picker'}" optional="show"/>
                         </group>
                         <notebook>
                             <page name="calendars" string="Calendars">
