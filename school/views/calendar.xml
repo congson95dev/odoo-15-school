@@ -30,6 +30,11 @@
                       decoration-success="state == 'done'"
                       decoration-info="state == 'cancel'"
                 >
+                    <!-- show button at the header of the tree view -->
+                    <!-- important: this button don't have "id" like button in form view -->
+                    <header>
+                        <button name="action_draft" string="Set To Draft" type="object" class="btn-primary"/>
+                    </header>
                     <field name="sequence" readonly="1"/>
                     <!-- trying to use widget="many2onebutton" so in the list view, when we click on student_id, it will redirect us to student form view -->
                     <!-- but it's not working -->
@@ -53,6 +58,14 @@
                            decoration-info="state == 'cancel'"/>
                     <field name="color_picker" widget="color_picker"/>
                     <field name="color" widget="color"/>
+                    <!-- show button at the end of tree view -->
+                    <!-- important: this button don't have "id" like button in form view -->
+                    <button name="action_draft"
+                            attrs="{'invisible': [('state', '!=', 'cancel')]}"
+                            type="object" class="fa fa-file btn-primary"/>
+                    <button name="action_cancel"
+                            attrs="{'invisible': [('state', 'not in', ('draft','confirm','done'))]}"
+                            type="object" class="fa fa-times btn-danger"/>
                 </tree>
             </field>
         </record>

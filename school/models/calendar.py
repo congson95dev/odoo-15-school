@@ -23,7 +23,10 @@ class Calendar(models.Model):
         return res
 
     sequence = fields.Char(string='Sequence', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'), tracking=True)
-    student_id = fields.Many2one('school.students', string='Student', required=True, tracking=True)
+    # ondelete have 2 method:
+    # ondelete="restrict" will prevent you from delete student if that student is currently connecting to some calendars
+    # ondelete="cascade" will delete calendars which connected with the deleted student
+    student_id = fields.Many2one('school.students', string='Student', required=True, tracking=True, ondelete="cascade")
     teacher_id = fields.Many2one('school.teachers', string='Teachers', required=True, tracking=True)
     student_age = fields.Integer(string='Age', related='student_id.student_age', tracking=True)
     student_gender = fields.Selection([('m', 'Male'), ('f', 'Female'), ('o', 'Other')], string='Gender', tracking=True)
@@ -92,7 +95,9 @@ class Calendar(models.Model):
             rec.school_products_ids = lines
 
     def action_draft(self):
-        self.state = 'draft'
+        for rec in self:
+            if rec.state == 'cancel':
+                rec.state = 'draft'
 
     def action_confirm(self):
         self.state = 'confirm'
@@ -109,7 +114,9 @@ class Calendar(models.Model):
         self.state = 'done'
 
     def action_cancel(self):
-        self.state = 'cancel'
+        for rec in self:
+            if rec.state in ('draft','confirm','done'):
+                self.state = 'cancel'
 
     # count calendar jobs by calendar id
     def count_jobs(self):

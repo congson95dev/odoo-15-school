@@ -28,8 +28,9 @@
             <field name="arch" type="xml">
                 <!-- multi_edit is to allow multi edit in tree view -->
                 <!-- add expand="1" to show all the records at first loading page -->
+                <!-- export_xlsx="0" to hide the export all button next to the create button -->
                 <!-- banner_route, this is a banner html called to kanban view or tree view -->
-                <tree multi_edit="1" expand="1" banner_route="/school/students_banner_route">
+                <tree multi_edit="1" expand="1" export_xlsx="0" banner_route="/school/students_banner_route">
                     <!-- optional="show" and optional="hide" to show/hide column by default -->
                     <field name="sequence" readonly="1" optional="show"/>
                     <field name="name" optional="show"/>
@@ -118,6 +119,9 @@
                         <field name="photo" widget="image" class="oe_avatar"/>
                         <div class="oe_title">
                             <h1>
+                                <!-- class="oe_edit_only" is to show only when we edit the record -->
+                                <!-- this class can use in any code tag <> -->
+                                <label for="sequence" class="oe_edit_only">Sequence</label><br/>
                                 <field name="sequence" readonly="1"/>
                             </h1>
                         </div>
@@ -140,6 +144,7 @@
                             <field name="student_calendar_count"/>
                             <!-- show archive / unarchive in form -->
                             <field name="active" invisible="1"/>
+                            <field name="test_int_for_constraint"/>
                         </group>
                         <notebook>
                             <page name="calendars" string="Calendars">

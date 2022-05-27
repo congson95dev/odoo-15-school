@@ -3,7 +3,7 @@ from odoo import api, models, fields
 # in report, this file is not neccessary
 # this file is used for override variables of report
 
-class StudentReport(models.Model):
+class StudentReport(models.AbstractModel):
     # this _name should be template id in view file report/student_report_template.xml
     # so we will override variable of view which have id = report_student
     _name = "report.school.report_student"

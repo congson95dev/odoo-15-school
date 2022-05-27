@@ -46,7 +46,19 @@ class Students(models.Model):
     calendar_ids = fields.One2many('school.calendar', 'student_id', string="Calendars")
     # show archive / unarchive in list
     active = fields.Boolean(string="Active", default=True)
+    # this field is created to test int for constraint
+    test_int_for_constraint = fields.Integer(string="Test Interger For Constraint", default=18)
 
+    # _sql_constraints is to validate field
+    # such as check unique field or field have some condition, like age > 7
+    # but this _sql_constraints have a huge weakness that if there's already some records which have values violates the rules,
+    # then that rule is not affected
+    # in that case, we should use @api.constrains instead
+    # in fact, this is not good to use, i recommend to use @api.constrains instead of _sql_constraints in every posible way
+    _sql_constraints = [
+        ('name_unique', 'unique(name)', 'name is already exists!'),
+        ('test_int_more_than_7', 'check(test_int_for_constraint > 7)', 'test int is lower than 7!')
+    ]
 
     # compute function
     def _compute_student_calendar_count(self):
